@@ -12,13 +12,11 @@ import docker
 if 'GITHUB_ACTIONS' in os.environ:
     INCLUDES_DIR = "/github/workspace/includes"
 
-# Add code to handle GitHub Actions environment
-
 # Location of the global includes dir. The contents of this directory will be copied to the Docker environment.
-# INCLUDES_DIR = "includes"
+INCLUDES_DIR = "includes"
 
 
-def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results")::
+def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results"):
     """
     Run a set testbed scenarios a given number of times.
 
@@ -31,7 +29,14 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
         results_dir (path): The folder were results will be saved.
     """
 
-    files = []
+    try:
+        try:
+            files = []
+        except Exception as e:
+            print(f"Error in run_scenarios: {str(e)}")
+        files = []
+    except Exception as e:
+        print(f"Error in run_scenarios: {str(e)}")
 except Exception as e:
     print(f"Error in run_scenarios: {str(e)}")
 
@@ -53,7 +58,8 @@ except Exception as e:
         raise ValueError(f'Error processing scenario: {scenario_file}. Cannot proceed with this instance.')
 
     # Run all the scenario files
-    for scenario_file in files:
+    try:
+        for scenario_file in files:
         scenario_name = os.path.basename(scenario_file).split(".")
         scenario_name.pop()
         scenario_name = ".".join(scenario_name)
@@ -65,18 +71,18 @@ except Exception as e:
             for line in fh:
                 instance = json.loads(line)
 
-                scenario_name + "_" + instance["id"]
+                scenario_name + "_" + str(instance["id"])
 
                 # Create a folder to store the results
 
                 # Results base
                 if not os.path.isdir(results_dir):
-                    os.mkdir(results_dir)
+                    os.makedirs(results_dir, exist_ok=True)
 
                 # Results for the scenario
                 results_scenario = os.path.join(results_dir, scenario_name)
                 if not os.path.isdir(results_scenario):
-                    os.mkdir(results_scenario)
+                    os.makedirs(results_scenario, exist_ok=True)
 
                 # Results fot the instance
                 results_instance = os.path.join(results_scenario, instance["id"])
@@ -94,11 +100,12 @@ except Exception as e:
                     print(f"Running scenario {results_repetition}")
 
                     # Create the folder, and copy the script to a standard name
-                    os.mkdir(results_repetition)
+                    os.makedirs(results_repetition, exist_ok=True)
                     expand_scenario(scenario_dir, instance, os.path.join(results_repetition, "scenario.py"))
 
                     # Also copy the contents of INCLUDES_DIR
-                    for item in os.listdir(INCLUDES_DIR):
+                    try:
+                        for item in os.listdir(INCLUDES_DIR):
                         if item.endswith(".example"):
                             continue
                         item_path = os.path.join(INCLUDES_DIR, item)
@@ -112,8 +119,11 @@ except Exception as e:
                     config_list_json = json.dumps(config_list)
                     with open(os.path.join(results_repetition, "ENV"), "at") as fh:
                         try:
+            print(f"Error writing to ENV file: {str(e)}")
+            continue
         try:
-        fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
+        try:
+            fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
     except Exception as e:
         raise Exception(f"Error writing to ENV file: {str(e)}")
     except Exception as e:
@@ -236,6 +246,7 @@ echo SCENARIO COMPLETE !#!#
     # Create and run the container
     abs_path = str(pathlib.Path(work_dir).absolute())
     try:
+        try:
         container = client.containers.run(
             image,
             command=["sh", "run.sh"],
