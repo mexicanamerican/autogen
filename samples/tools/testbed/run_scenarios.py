@@ -229,7 +229,23 @@ pip install pyautogen
 python scenario.py
 rm ENV
 echo SCENARIO COMPLETE !#!#
-"""
+"")
+    print("\n\n" + work_dir + "\n===================================================================")
+
+    # Create and run the container
+    abs_path = str(pathlib.Path(work_dir).absolute())
+    try:
+        container = client.containers.run(
+            image,
+            command=["sh", "run.sh"],
+            working_dir="/workspace",
+            detach=True,
+            # get absolute path to the working directory
+            volumes={abs_path: {"bind": "/workspace", "mode": "rw"}},
+        )
+    except Exception as e:
+        print(f"Error running the scenario in Docker: {str(e)}")
+        continue
         )
 
     print("\n\n" + work_dir + "\n===================================================================")
