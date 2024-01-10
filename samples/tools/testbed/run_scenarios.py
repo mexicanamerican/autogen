@@ -131,7 +131,7 @@ except Exception as e:
         continue
 
                     # Run the scenario
-                    if is_native:
+                                                elif is_native:
                         run_scenario_natively(results_repetition)
                     else:
                         run_scenario_in_docker(results_repetition)
