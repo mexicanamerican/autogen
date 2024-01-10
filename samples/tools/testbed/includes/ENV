@@ -1,0 +1,11 @@
+import os
+
+def create_env_file():
+    env_file = os.path.join("samples/tools/testbed/includes", "ENV")
+    
+    with open(env_file, "w") as f:
+        f.write("variable1=value1\n")
+        f.write("variable2=value2\n")
+        # Add more environment variables as needed
+
+create_env_file()
