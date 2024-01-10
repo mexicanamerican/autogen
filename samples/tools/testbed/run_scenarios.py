@@ -111,7 +111,10 @@ except Exception as e:
                     config_list_json = json.dumps(config_list)
                     with open(os.path.join(results_repetition, "ENV"), "at") as fh:
                         try:
+        try:
         fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
+    except Exception as e:
+        raise Exception(f"Error writing to ENV file: {str(e)}")
     except Exception as e:
         print(f"Error writing to ENV file: {str(e)}")
         continue
