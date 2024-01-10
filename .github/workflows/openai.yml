@@ -35,9 +35,9 @@ jobs:
         run: |
           docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e.
-          python -c "import autogen"
+          pip install -e .
           pip install coverage pytest-asyncio
+          python -c "import autogen"
       - name: Install packages for test when needed
         if: matrix.python-version == '3.9'
         run: |
@@ -45,7 +45,7 @@ jobs:
       - name: Install dependencies for test when needed
         if: matrix.python-version == '3.10'  # test_agentchat_function_call
         run: |
-          pip install -e.[mathchat]
+          pip install -e .[mathchat]
       - name: Coverage
         if: matrix.python-version == '3.9'
         env:

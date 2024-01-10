@@ -14,7 +14,9 @@ import sys
 from autogen import config_list_from_json
 
 # Detect GitHub Actions environment
-IN_GITHUB_ACTIONS = os.getenv('GITHUB_ACTIONS')
+import docker
+
+IN_GITHUB_ACTIONS = os.getenv('GITHUB_ACTIONS') if os.getenv('GITHUB_ACTIONS') else False
 
 # Add code to handle GitHub Actions environment
 
@@ -63,7 +65,7 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
         scenario_dir = os.path.dirname(os.path.realpath(scenario_file))
 
         # Each line in the scenario file is an instance. Run it.
-        with open(scenario_file) as fh:
+        with open(scenario_file, 'r') as fh:
             for line in fh:
                 instance = json.loads(line)
 
@@ -301,7 +303,7 @@ if __name__ == "__main__":
     if not os.path.isfile(env_file):
         shutil.copyfile(example_file, env_file)
         sys.stderr.write(
-            f"The environment file '{env_file}' does not exist (perhaps this is your first time setting up the testbed). A default environment file has been provided, but you may want to edit it to include your API keys and configurations.\n"
+            f"The environment file '{env_file}' does not exist. This file is used to store API keys and configurations necessary for running the scenarios. If this is your first time setting up the testbed, a default environment file has been provided. Please edit the file '{env_file}' to include your API keys and configurations before proceeding with running the scenarios.\n"
         )
 
     run_scenarios(args.scenario, args.repeat, is_native, config_list)
