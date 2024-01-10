@@ -16,7 +16,7 @@ from autogen import config_list_from_json
 # Detect GitHub Actions environment
 from utils.docker_utils import pull_image, run_container
 
-from utils.docker_utils import run_container
+from utils.docker_utils import pull_image, run_container
 
 IN_GITHUB_ACTIONS = os.getenv('GITHUB_ACTIONS') if os.getenv('GITHUB_ACTIONS') else False
 
@@ -56,7 +56,7 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
 
             files.append(scenario_file)
     else:
-        raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), scenario)
+        print(f'Error processing scenario: {scenario_file}. Continuing to the next instance.')
 
     # Run all the scenario files
     for scenario_file in files:
@@ -108,13 +108,43 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
                         if item.endswith(".example"):
                             continue
                         item_path = os.path.join(INCLUDES_DIR, item)
+                            try:
+                                shutil.copyfile(item_path, os.path.join(results_repetition, item))
+                            except Exception as e:
+                                print(f"Error copying file {item}: {str(e)}")
+                                continue
+
+                    # Append the config list to the ENV file
+                    config_list_json = json.dumps(config_list)
+                    with open(os.path.join(results_repetition, "ENV"), "at") as fh:
+                        try:
+        fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
+    except Exception as e:
+        print(f"Error writing to ENV file: {str(e)}")
+        continue
+
+                    # Run the scenario
+                    if is_native:
+                        run_scenario_natively(results_repetition)
+                    else:
+                        run_scenario_in_docker(results_repetition)
+
+                    # Also copy the contents of INCLUDES_DIR
+                    for item in os.listdir(INCLUDES_DIR):
+                        if item.endswith(".example"):
+                            continue
+                        item_path = os.path.join(INCLUDES_DIR, item)
                         if os.path.isfile(item_path):
                             shutil.copyfile(item_path, os.path.join(results_repetition, item))
 
                     # Append the config list to the ENV file
                     config_list_json = json.dumps(config_list)
                     with open(os.path.join(results_repetition, "ENV"), "at") as fh:
-                        fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
+                        try:
+                            fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
+                        except Exception as e:
+                            print(f"Error writing to ENV file: {str(e)}")
+                            continue
 
                     # Run the scenario
                     if is_native:
@@ -199,7 +229,32 @@ pip install pyautogen
 python scenario.py
 rm ENV
 echo SCENARIO COMPLETE !#!#
-"""
+"")
+    print("\n\n" + work_dir + "\n===================================================================")
+
+    # Create and run the container
+    abs_path = str(pathlib.Path(work_dir).absolute())
+        try:
+        container = client.containers.run(
+        container = client.containers.run(
+            image,
+            command=["sh", "run.sh"],
+            working_dir="/workspace",
+            detach=True,
+            # get absolute path to the working directory
+            volumes={abs_path: {"bind": "/workspace", "mode": "rw"}},
+        )
+    except Exception as e:
+        print(f"Error running the scenario in Docker: {str(e)}")
+        continue
+            working_dir="/workspace",
+            detach=True,
+            # get absolute path to the working directory
+            volumes={abs_path: {"bind": "/workspace", "mode": "rw"}},
+        )
+    except Exception as e:
+        print(f"Error running the scenario in Docker: {str(e)}")
+        continue
         )
 
     print("\n\n" + work_dir + "\n===================================================================")
