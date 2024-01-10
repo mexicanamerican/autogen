@@ -66,7 +66,7 @@ except Exception as e:
             for line in fh:
                 instance = json.loads(line)
 
-                scenario_name + "_" + instance["id"]
+                scenario_name + "_" + str(instance["id"])
 
                 # Create a folder to store the results
 
