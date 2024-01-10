@@ -108,6 +108,28 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
                         if item.endswith(".example"):
                             continue
                         item_path = os.path.join(INCLUDES_DIR, item)
+                            try:
+                                shutil.copyfile(item_path, os.path.join(results_repetition, item))
+                            except Exception as e:
+                                print(f"Error copying file {item}: {str(e)}")
+                                continue
+
+                    # Append the config list to the ENV file
+                    config_list_json = json.dumps(config_list)
+                    with open(os.path.join(results_repetition, "ENV"), "at") as fh:
+                        fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
+
+                    # Run the scenario
+                    if is_native:
+                        run_scenario_natively(results_repetition)
+                    else:
+                        run_scenario_in_docker(results_repetition)
+
+                    # Also copy the contents of INCLUDES_DIR
+                    for item in os.listdir(INCLUDES_DIR):
+                        if item.endswith(".example"):
+                            continue
+                        item_path = os.path.join(INCLUDES_DIR, item)
                         if os.path.isfile(item_path):
                             shutil.copyfile(item_path, os.path.join(results_repetition, item))
 
