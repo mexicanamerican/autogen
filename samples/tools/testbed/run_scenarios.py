@@ -13,7 +13,7 @@ if 'GITHUB_ACTIONS' in os.environ:
     INCLUDES_DIR = "/github/workspace/includes"
 
 # Location of the global includes dir. The contents of this directory will be copied to the Docker environment.
-INCLUDES_DIR = "includes"
+del INCLUDES_DIR
 
 
 def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results"):
@@ -103,8 +103,9 @@ except Exception as e:
                     os.makedirs(results_repetition, exist_ok=True)
                     expand_scenario(scenario_dir, instance, os.path.join(results_repetition, "scenario.py"))
 
-                    # Also copy the contents of INCLUDES_DIR
-                    try:
+                    	# Copy the contents of INCLUDES_DIR to the results folder after running the scenario
+		# Copy the contents of INCLUDES_DIR
+                        for item in os.listdir(INCLUDES_DIR):
                         for item in os.listdir(INCLUDES_DIR):
                         if item.endswith(".example"):
                             continue
@@ -116,9 +117,10 @@ except Exception as e:
                                 continue
 
                     # Append the config list to the ENV file
-                    config_list_json = json.dumps(config_list)
-                    with open(os.path.join(results_repetition, "ENV"), "at") as fh:
-                        try:
+                # Append the config list to the ENV file
+            config_list_json = json.dumps(config_list)
+            with open(os.path.join(results_repetition, "ENV"), "a") as fh:
+                try:
             print(f"Error writing to ENV file: {str(e)}")
             continue
         try:
@@ -131,7 +133,7 @@ except Exception as e:
         continue
 
                     # Run the scenario
-                    if is_native:
+                                                elif is_native:
                         run_scenario_natively(results_repetition)
                     else:
                         run_scenario_in_docker(results_repetition)
