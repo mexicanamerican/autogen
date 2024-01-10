@@ -124,11 +124,15 @@ except Exception as e:
 
                     # Also copy the contents of INCLUDES_DIR
                     for item in os.listdir(INCLUDES_DIR):
-                        if item.endswith(".example"):
-                            continue
                         item_path = os.path.join(INCLUDES_DIR, item)
-                        if os.path.isfile(item_path):
-                            shutil.copyfile(item_path, os.path.join(results_repetition, item))
+                        try:
+                            if os.path.isfile(item_path):
+                                shutil.copyfile(item_path, os.path.join(results_repetition, item))
+                            elif os.path.isdir(item_path):
+                                shutil.copytree(item_path, os.path.join(results_repetition, item))
+                        except Exception as e:
+                            print(f"Error copying file/folder {item}: {str(e)}")
+                            continue
 
                     # Append the config list to the ENV file
                     config_list_json = json.dumps(config_list)
