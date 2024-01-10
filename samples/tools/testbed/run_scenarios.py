@@ -6,15 +6,10 @@ import time
 import json
 import argparse
 import pathlib
-import shutil
-import subprocess
-import sys
-import time
-import json
-import argparse
-import pathlib
+import docker
 
-INCLUDES_DIR = "includes"
+if 'GITHUB_ACTIONS' in os.environ:
+    INCLUDES_DIR = "/github/workspace/includes"
 
 # Add code to handle GitHub Actions environment
 
