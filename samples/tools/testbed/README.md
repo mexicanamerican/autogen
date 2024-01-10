@@ -6,6 +6,10 @@ This Testbed sample has been tested in, and is known to work with, Autogen versi
 
 ## Setup
 
+### Running the Testbed in a GitHub Actions Environment
+
+To run the Testbed in a GitHub Actions environment, you need to set up the necessary API keys and configure the environment variables as described below.
+
 Before you begin, you must configure your API keys for use with the Testbed. As with other Autogen applications, the Testbed will look for the OpenAI keys in a file in the current working directy, or environment variable named, OAI_CONFIG_LIST. This can be overrriden using a command-line parameter described later.
 
 For some scenarios, additional keys may be required (e.g., keys for the Bing Search API). These can be added to an `ENV` file in the `includes` folder. A sample has been provided in ``includes/ENV.example``. Edit ``includes/ENV`` as needed.
