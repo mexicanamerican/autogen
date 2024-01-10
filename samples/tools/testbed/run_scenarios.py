@@ -13,7 +13,7 @@ if 'GITHUB_ACTIONS' in os.environ:
     INCLUDES_DIR = "/github/workspace/includes"
 
 # Location of the global includes dir. The contents of this directory will be copied to the Docker environment.
-INCLUDES_DIR = "includes"
+del INCLUDES_DIR
 
 
 def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results"):
