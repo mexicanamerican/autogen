@@ -1,28 +1,24 @@
+import shutil
+import shutil
+import subprocess
+import sys
+import time
+import json
+import argparse
+import pathlib
 import os
-import shutil
-import subprocess
-import sys
-import time
-import json
-import argparse
-import pathlib
-import shutil
-import subprocess
-import sys
-import time
-import json
-import argparse
-import pathlib
+import docker
 
-INCLUDES_DIR = "includes"
+if 'GITHUB_ACTIONS' in os.environ:
+    INCLUDES_DIR = "/github/workspace/includes"
 
 # Add code to handle GitHub Actions environment
 
 # Location of the global includes dir. The contents of this directory will be copied to the Docker environment.
-INCLUDES_DIR = "includes"
+# INCLUDES_DIR = "includes"
 
 
-def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results"):
+def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results")::
     """
     Run a set testbed scenarios a given number of times.
 
@@ -36,6 +32,8 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
     """
 
     files = []
+except Exception as e:
+    print(f"Error in run_scenarios: {str(e)}")
 
     # Figure out which files or folders we are working with
     if os.path.isfile(scenario):
@@ -52,7 +50,7 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
 
             files.append(scenario_file)
     else:
-        print(f'Error processing scenario: {scenario_file}. Continuing to the next instance.')
+        raise ValueError(f'Error processing scenario: {scenario_file}. Cannot proceed with this instance.')
 
     # Run all the scenario files
     for scenario_file in files:
@@ -114,7 +112,10 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
                     config_list_json = json.dumps(config_list)
                     with open(os.path.join(results_repetition, "ENV"), "at") as fh:
                         try:
+        try:
         fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
+    except Exception as e:
+        raise Exception(f"Error writing to ENV file: {str(e)}")
     except Exception as e:
         print(f"Error writing to ENV file: {str(e)}")
         continue
@@ -127,11 +128,15 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
 
                     # Also copy the contents of INCLUDES_DIR
                     for item in os.listdir(INCLUDES_DIR):
-                        if item.endswith(".example"):
-                            continue
                         item_path = os.path.join(INCLUDES_DIR, item)
-                        if os.path.isfile(item_path):
-                            shutil.copyfile(item_path, os.path.join(results_repetition, item))
+                        try:
+                            if os.path.isfile(item_path):
+                                shutil.copyfile(item_path, os.path.join(results_repetition, item))
+                            elif os.path.isdir(item_path):
+                                shutil.copytree(item_path, os.path.join(results_repetition, item))
+                        except Exception as e:
+                            print(f"Error copying file/folder {item}: {str(e)}")
+                            continue
 
                     # Append the config list to the ENV file
                     config_list_json = json.dumps(config_list)
