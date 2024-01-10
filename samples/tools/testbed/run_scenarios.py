@@ -104,7 +104,7 @@ except Exception as e:
                     expand_scenario(scenario_dir, instance, os.path.join(results_repetition, "scenario.py"))
 
                     # Also copy the contents of INCLUDES_DIR
-                    try:
+                        for item in os.listdir(INCLUDES_DIR):
                         for item in os.listdir(INCLUDES_DIR):
                         if item.endswith(".example"):
                             continue
