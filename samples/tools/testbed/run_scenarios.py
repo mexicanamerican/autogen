@@ -56,7 +56,7 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
 
             files.append(scenario_file)
     else:
-        raise ValueError('The scenario argument is neither a file nor a directory')
+        print(f'Error processing scenario: {scenario_file}. Continuing to the next instance.')
 
     # Run all the scenario files
     for scenario_file in files:
