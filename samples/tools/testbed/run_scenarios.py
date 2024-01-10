@@ -14,7 +14,9 @@ import sys
 from autogen import config_list_from_json
 
 # Detect GitHub Actions environment
-import docker
+from utils.docker_utils import pull_image, run_container
+
+from utils.docker_utils import run_container
 
 IN_GITHUB_ACTIONS = os.getenv('GITHUB_ACTIONS') if os.getenv('GITHUB_ACTIONS') else False
 
@@ -186,15 +188,7 @@ def run_scenario_in_docker(work_dir, timeout=600):
     image_name = "python:3.11"
 
     # Pull a suitable image
-    try:
-        image = client.images.get(image_name)
-    except docker.errors.ImageNotFound:
-        # pull the image
-        print("Pulling image", image_name)
-        try:
-            image = client.images.pull(image_name)
-        except docker.errors.DockerException:
-            print("Failed to pull image", image_name)
+    image = pull_image(image_name)
 
     # Prepare the run script
     with open(os.path.join(work_dir, "run.sh"), "wt") as f:
@@ -300,10 +294,6 @@ if __name__ == "__main__":
     # Warn aboit a common error
     env_file = os.path.join(INCLUDES_DIR, "ENV")
     example_file = os.path.join(INCLUDES_DIR, "ENV.example")
-    if not os.path.isfile(env_file):
-        shutil.copyfile(example_file, env_file)
-        sys.stderr.write(
-            f"The environment file '{env_file}' does not exist. This file is used to store API keys and configurations necessary for running the scenarios. If this is your first time setting up the testbed, a default environment file has been provided. Please edit the file '{env_file}' to include your API keys and configurations before proceeding with running the scenarios.\n"
-        )
+
 
     run_scenarios(args.scenario, args.repeat, is_native, config_list)
