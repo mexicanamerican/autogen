@@ -22,7 +22,8 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
 
     Args:
         The JSONL scenario file to run. If a directory is specified, then
-                            all JSONL files in the folder will be loaded and run. (default: ./scenarios)    The file or folder containing the scenario JSONL instances. If given a folder, then
+                            all JSONL files in the folder will be loaded and run.
+The environment variable name or path to the OAI_CONFIG_LIST (default: OAI_CONFIG_LIST). (default: ./scenarios)    The file or folder containing the scenario JSONL instances. If given a folder, then
                             all JSONL files in the folder will be loaded and run.
         The number of repetitions to run for each scenario (default: 10)
         is_native (bool):   True if the scenario should be run locally rather than in Docker (proceed with caution!)
@@ -348,7 +349,9 @@ if __name__ == "__main__":
             print("Received '" + choice + "'. Exiting.")
 
     # Import docker if needed
-    is_native = True if args.native else False
+                type=str,
+                help="The environment variable name or path to the OAI_CONFIG_LIST (default: OAI_CONFIG_LIST)."
+        is_native = True if args.native else False
     if not is_native:
         import docker
 
