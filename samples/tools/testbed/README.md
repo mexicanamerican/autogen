@@ -111,7 +111,7 @@ For example:
 }
 ```
 
-Where the ``id`` is the instance id used when saving results, ``template`` points to a python file that contains the scenario logic, and ``values`` contains a set of strings to find and replace when expanding the template.
+The `id` is the instance ID used when saving results. The `template` points to the python file containing the scenario logic, and `values` contains a set of strings to find and replace when expanding the template.
 
 An example templated python file is:
 
