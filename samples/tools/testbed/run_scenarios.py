@@ -30,6 +30,10 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
     """
 
     try:
+        try:
+            files = []
+        except Exception as e:
+            print(f"Error in run_scenarios: {str(e)}")
         files = []
     except Exception as e:
         print(f"Error in run_scenarios: {str(e)}")
