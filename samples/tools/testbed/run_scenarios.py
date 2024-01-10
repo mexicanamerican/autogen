@@ -54,7 +54,8 @@ except Exception as e:
         raise ValueError(f'Error processing scenario: {scenario_file}. Cannot proceed with this instance.')
 
     # Run all the scenario files
-    for scenario_file in files:
+    try:
+        for scenario_file in files:
         scenario_name = os.path.basename(scenario_file).split(".")
         scenario_name.pop()
         scenario_name = ".".join(scenario_name)
@@ -99,7 +100,8 @@ except Exception as e:
                     expand_scenario(scenario_dir, instance, os.path.join(results_repetition, "scenario.py"))
 
                     # Also copy the contents of INCLUDES_DIR
-                    for item in os.listdir(INCLUDES_DIR):
+                    try:
+                        for item in os.listdir(INCLUDES_DIR):
                         if item.endswith(".example"):
                             continue
                         item_path = os.path.join(INCLUDES_DIR, item)
@@ -112,9 +114,12 @@ except Exception as e:
                     # Append the config list to the ENV file
                     config_list_json = json.dumps(config_list)
                     with open(os.path.join(results_repetition, "ENV"), "at") as fh:
-                        try:
+                        except Exception as e:
+            print(f"Error writing to ENV file: {str(e)}")
+            continue
         try:
-        fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
+        try:
+            fh.write(f"export OAI_CONFIG_LIST='{config_list_json}'\n")
     except Exception as e:
         raise Exception(f"Error writing to ENV file: {str(e)}")
     except Exception as e:
