@@ -20,7 +20,7 @@ The Testbed also requires Docker (Desktop or Engine) AND the __python docker__ l
 
 ## Running the Testbed
 
-To run the Testbed, execute the following command: `python run_scenarios.py`
+The Testbed script allows various command-line arguments to control the parameters of execution. To explore these options, use the command `python run_scenarios.py -h`.
 ``python run_scenarios.py --repeat 1``
 
 The default it to repeat this scenario 10 times. This can be costly. To run each scenario only once, use:
@@ -42,6 +42,12 @@ options:
 
   -r REPEAT, --repeat REPEAT
                 The number of repetitions to run for each scenario (default: 10).
+
+  -c CONFIG, --config CONFIG
+                The environment variable name or path to the OAI_CONFIG_LIST (default: OAI_CONFIG_LIST).
+
+  --native      Run the scenarios natively rather than in docker.
+                NOTE: This is not advisable, and should be done with great caution.
 
   -c CONFIG, --config CONFIG
                 The environment variable name or path to the OAI_CONFIG_LIST (default: OAI_CONFIG_LIST).
