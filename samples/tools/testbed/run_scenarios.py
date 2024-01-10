@@ -7,7 +7,16 @@ import sys
 import time
 import pathlib
 import argparse
+import os
+import json
+import subprocess
+import sys
 from autogen import config_list_from_json
+
+# Detect GitHub Actions environment
+IN_GITHUB_ACTIONS = os.getenv('GITHUB_ACTIONS')
+
+# Add code to handle GitHub Actions environment
 
 # Location of the global includes dir. The contents of this directory will be copied to the Docker environment.
 INCLUDES_DIR = "includes"
