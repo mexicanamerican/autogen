@@ -72,12 +72,12 @@ except Exception as e:
 
                 # Results base
                 if not os.path.isdir(results_dir):
-                    os.mkdir(results_dir)
+                    os.makedirs(results_dir, exist_ok=True)
 
                 # Results for the scenario
                 results_scenario = os.path.join(results_dir, scenario_name)
                 if not os.path.isdir(results_scenario):
-                    os.mkdir(results_scenario)
+                    os.makedirs(results_scenario, exist_ok=True)
 
                 # Results fot the instance
                 results_instance = os.path.join(results_scenario, instance["id"])
@@ -95,7 +95,7 @@ except Exception as e:
                     print(f"Running scenario {results_repetition}")
 
                     # Create the folder, and copy the script to a standard name
-                    os.mkdir(results_repetition)
+                    os.makedirs(results_repetition, exist_ok=True)
                     expand_scenario(scenario_dir, instance, os.path.join(results_repetition, "scenario.py"))
 
                     # Also copy the contents of INCLUDES_DIR
