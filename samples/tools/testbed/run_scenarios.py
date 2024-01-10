@@ -234,10 +234,19 @@ echo SCENARIO COMPLETE !#!#
 
     # Create and run the container
     abs_path = str(pathlib.Path(work_dir).absolute())
-    try:
+        try:
+        container = client.containers.run(
         container = client.containers.run(
             image,
             command=["sh", "run.sh"],
+            working_dir="/workspace",
+            detach=True,
+            # get absolute path to the working directory
+            volumes={abs_path: {"bind": "/workspace", "mode": "rw"}},
+        )
+    except Exception as e:
+        print(f"Error running the scenario in Docker: {str(e)}")
+        continue
             working_dir="/workspace",
             detach=True,
             # get absolute path to the working directory
