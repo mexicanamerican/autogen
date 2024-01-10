@@ -114,7 +114,7 @@ except Exception as e:
                     # Append the config list to the ENV file
                     config_list_json = json.dumps(config_list)
                     with open(os.path.join(results_repetition, "ENV"), "at") as fh:
-                        except Exception as e:
+                        try:
             print(f"Error writing to ENV file: {str(e)}")
             continue
         try:
