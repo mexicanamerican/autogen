@@ -1,4 +1,4 @@
-import os
+import shutil
 import shutil
 import subprocess
 import sys
@@ -6,6 +6,7 @@ import time
 import json
 import argparse
 import pathlib
+import os
 import docker
 
 if 'GITHUB_ACTIONS' in os.environ:
@@ -17,7 +18,7 @@ if 'GITHUB_ACTIONS' in os.environ:
 # INCLUDES_DIR = "includes"
 
 
-def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results" try:):
+def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results")::
     """
     Run a set testbed scenarios a given number of times.
 
