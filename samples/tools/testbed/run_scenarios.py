@@ -16,6 +16,7 @@ from autogen import config_list_from_json
 # Detect GitHub Actions environment
 from utils.docker_utils import pull_image, run_container
 import docker
+from utils.docker_utils import run_container
 
 IN_GITHUB_ACTIONS = os.getenv('GITHUB_ACTIONS') if os.getenv('GITHUB_ACTIONS') else False
 
