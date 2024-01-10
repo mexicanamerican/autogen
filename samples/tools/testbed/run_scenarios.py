@@ -242,6 +242,7 @@ echo SCENARIO COMPLETE !#!#
     # Create and run the container
     abs_path = str(pathlib.Path(work_dir).absolute())
     try:
+        try:
         container = client.containers.run(
             image,
             command=["sh", "run.sh"],
