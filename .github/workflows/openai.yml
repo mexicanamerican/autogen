@@ -35,9 +35,8 @@ jobs:
         run: |
           docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e.
+          pip install -r .github/workflows/requirements.txt
           python -c "import autogen"
-          pip install coverage pytest-asyncio
       - name: Install packages for test when needed
         if: matrix.python-version == '3.9'
         run: |
@@ -45,7 +44,7 @@ jobs:
       - name: Install dependencies for test when needed
         if: matrix.python-version == '3.10'  # test_agentchat_function_call
         run: |
-          pip install -e.[mathchat]
+          pip install -r .github/workflows/requirements.txt
       - name: Coverage
         if: matrix.python-version == '3.9'
         env:
