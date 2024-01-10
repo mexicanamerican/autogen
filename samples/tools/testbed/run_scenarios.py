@@ -16,7 +16,7 @@ from autogen import config_list_from_json
 # Detect GitHub Actions environment
 import docker
 
-IN_GITHUB_ACTIONS = os.getenv('GITHUB_ACTIONS')
+IN_GITHUB_ACTIONS = os.getenv('GITHUB_ACTIONS') if os.getenv('GITHUB_ACTIONS') else False
 
 # Add code to handle GitHub Actions environment
 
@@ -65,7 +65,7 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
         scenario_dir = os.path.dirname(os.path.realpath(scenario_file))
 
         # Each line in the scenario file is an instance. Run it.
-        with open(scenario_file) as fh:
+        with open(scenario_file, 'r') as fh:
             for line in fh:
                 instance = json.loads(line)
 
