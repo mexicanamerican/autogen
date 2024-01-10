@@ -21,10 +21,12 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
     Run a set testbed scenarios a given number of times.
 
     Args:
-        scenario (path):    The file or folder containing the scenario JSONL instances. If given a folder, then
+        The JSONL scenario file to run. If a directory is specified, then
                             all JSONL files in the folder will be loaded and run.
-        n_repeats (int):    The number of times each scenario instance will be repeated
-        is_native (bool):   True if the scenario should be run locally rather than in Docker (proceed with caution!)
+The environment variable name or path to the OAI_CONFIG_LIST (default: OAI_CONFIG_LIST). (default: ./scenarios)    The file or folder containing the scenario JSONL instances. If given a folder, then
+                            all JSONL files in the folder will be loaded and run.
+        The number of repetitions to run for each scenario (default: 10)
+    --native      Run the scenarios natively rather than in Docker. NOTE: This is not advisable and should be done with great caution.
         config_list (list): An Autogen OAI_CONFIG_LIST to be used when running scenarios.
         results_dir (path): The folder were results will be saved.
     """
@@ -135,7 +137,12 @@ except Exception as e:
                     # Run the scenario
                                                 elif is_native:
                         run_scenario_natively(results_repetition)
-                    else:
+                    python utils/download_humaneval.py
+python ./run_scenarios.py --repeat 3 scenarios/human_eval_two_agents_gpt35.jsonl
+python utils/collate_humaneval.py ./results/human_eval_two_agents_gpt35 | python utils/metrics_humaneval.py > human_eval_results_gpt35.csv
+
+cat human_eval_results_gpt35.csv
+else:
                         run_scenario_in_docker(results_repetition)
 
                     # Also copy the contents of INCLUDES_DIR
@@ -340,14 +347,16 @@ if __name__ == "__main__":
     # Warn if running natively
     if args.native:
         choice = input(
-            'WARNING: Running natively, without Docker, not only poses the usual risks of executing arbitrary AI generated code on your machine, it also makes it impossible to ensure that each test starts from a known and consistent set of initial conditions. For example, if the agents spend time debugging and installing Python libraries to solve the task, then those libraries will be available to all other runs. In other words, earlier runs can influence later runs, leading to many confounds in testing.\n\nAre you absolutely sure you want to continue with native execution? Type "Yes" exactly, and in full, to proceed: '
+              --native      Run the scenarios natively rather than in Docker. NOTE: This is not advisable and should be done with great caution.
         )
 
         if choice.strip().lower() != "yes":
             print("Received '" + choice + "'. Exiting.")
 
     # Import docker if needed
-    is_native = True if args.native else False
+                type=str,
+                help="The environment variable name or path to the OAI_CONFIG_LIST (default: OAI_CONFIG_LIST)."
+        is_native = True if args.native else False
     if not is_native:
         import docker
 

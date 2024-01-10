@@ -10,7 +10,7 @@ This Testbed sample has been tested in, and is known to work with, Autogen versi
 
 To run the Testbed in a GitHub Actions environment, you need to set up the necessary API keys and configure the environment variables as described below.
 
-Before you begin, you must configure the environment variables required for the Testbed. Similar to other Autogen applications, the Testbed relies on environment variables for specific configurations. The Testbed will look for the OpenAI keys in a file in the current working directory, or an environment variable named OAI_CONFIG_LIST. This can be overridden using a command-line parameter described later.. As with other Autogen applications, the Testbed will look for the OpenAI keys in a file in the current working directy, or environment variable named, OAI_CONFIG_LIST. This can be overrriden using a command-line parameter described later.
+Before you begin, you must configure the environment variables required for the Testbed. Similar to other Autogen applications, the Testbed relies on environment variables for specific configurations. The Testbed will look for the OpenAI keys in a file in the current working directory, or an environment variable named OAI_CONFIG_LIST. This can be overridden using a command-line parameter described later.. As with other Autogen applications, the Testbed will look for the OpenAI keys in a file in the current working directory, or environment variable named, OAI_CONFIG_LIST. This can be overrriden using a command-line parameter described later.
 
 For some scenarios, additional keys may be required (e.g., keys for the Bing Search API). These can be added to an `ENV` file in the `includes` folder. A sample has been provided in ``includes/ENV.example``. Edit ``includes/ENV`` as needed.
 
@@ -20,8 +20,8 @@ The Testbed also requires Docker (Desktop or Engine) AND the __python docker__ l
 
 ## Running the Testbed
 
-To run the Testbed, simply execute
-``python run_scenarios.py``
+The Testbed script allows various command-line arguments to control the parameters of execution. To explore these options, use the command `python run_scenarios.py -h`.
+``python run_scenarios.py --repeat 1``
 
 The default it to repeat this scenario 10 times. This can be costly. To run each scenario only once, use:
 ``python run_scenarios.py --repeat 1``
@@ -48,15 +48,21 @@ options:
 
   --native      Run the scenarios natively rather than in docker.
                 NOTE: This is not advisable, and should be done with great caution.
+
+  -c CONFIG, --config CONFIG
+                The environment variable name or path to the OAI_CONFIG_LIST (default: OAI_CONFIG_LIST).
+
+  --native      Run the scenarios natively rather than in docker.
+                NOTE: This is not advisable, and should be done with great caution.
 ```
 
 ## Results
 
-By default, the Testbed stores results in a folder heirarchy with the following template:
+By default, the Testbed stores results in a folder hierarchy that follows this template:
 
 ``./results/[scenario]/[instance_id]/[repetition]``
 
-For example, consider the following folders:
+For example, the folders below represent results for the ``two_agent_stocks_gpt4`` instance of the ``default_two_agents`` scenario:
 
 ``./results/default_two_agents/two_agent_stocks_gpt4/0``
 ``./results/default_two_agents/two_agent_stocks_gpt4/1``
@@ -65,7 +71,7 @@ For example, consider the following folders:
 
 ``./results/default_two_agents/two_agent_stocks_gpt4/9``
 
-This folder holds the results for the ``two_agent_stocks_gpt4`` instance of the ``default_two_agents`` scenario. The ``0`` folder contains the results of the first run. The ``1`` folder contains the results of the second run, and so on. You can think of the _instance_ as mapping to a prompt, or a unique set of parameters, while the _scenario_ defines the template in which those parameters are input.
+Each folder contains the results of a specific run, identified by the repetition number. The _instance_ maps to a unique set of parameters or a prompt, while the _scenario_ represents the template for those parameters.
 
 Within each folder, you will find the following files:
 
@@ -105,7 +111,7 @@ For example:
 }
 ```
 
-Where the ``id`` is the instance id used when saving results, ``template`` points to a python file that contains the scenario logic, and ``values`` contains a set of strings to find and replace when expanding the template.
+The `id` is the instance ID used when saving results. The `template` points to the python file containing the scenario logic, and `values` contains a set of strings to find and replace when expanding the template.
 
 An example templated python file is:
 
