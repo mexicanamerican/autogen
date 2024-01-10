@@ -294,10 +294,6 @@ if __name__ == "__main__":
     # Warn aboit a common error
     env_file = os.path.join(INCLUDES_DIR, "ENV")
     example_file = os.path.join(INCLUDES_DIR, "ENV.example")
-    if not os.path.isfile(env_file):
-        shutil.copyfile(example_file, env_file)
-        sys.stderr.write(
-            f"The environment file '{env_file}' does not exist. This file is used to store API keys and configurations necessary for running the scenarios. If this is your first time setting up the testbed, a default environment file has been provided. Please edit the file '{env_file}' to include your API keys and configurations before proceeding with running the scenarios.\n"
-        )
+
 
     run_scenarios(args.scenario, args.repeat, is_native, config_list)
