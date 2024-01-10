@@ -187,15 +187,7 @@ def run_scenario_in_docker(work_dir, timeout=600):
     image_name = "python:3.11"
 
     # Pull a suitable image
-    try:
-        image = client.images.get(image_name)
-    except docker.errors.ImageNotFound:
-        # pull the image
-        print("Pulling image", image_name)
-        try:
-            image = client.images.pull(image_name)
-        except docker.errors.DockerException:
-            print("Failed to pull image", image_name)
+    image = pull_image(image_name)
 
     # Prepare the run script
     with open(os.path.join(work_dir, "run.sh"), "wt") as f:
