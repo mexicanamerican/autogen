@@ -1,5 +1,12 @@
 from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
 
+try:
+    import autogen
+except ImportError:
+    import sys
+    import subprocess
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'autogen'])
+
 # Load LLM inference endpoints from an env variable or a file
 # See https://microsoft.github.io/autogen/docs/FAQ#set-your-api-endpoints
 # and OAI_CONFIG_LIST_sample
