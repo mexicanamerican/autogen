@@ -58,11 +58,11 @@ options:
 
 ## Results
 
-By default, the Testbed stores results in a folder heirarchy with the following template:
+By default, the Testbed stores results in a folder hierarchy that follows this template:
 
 ``./results/[scenario]/[instance_id]/[repetition]``
 
-For example, consider the following folders:
+For example, the folders below represent results for the ``two_agent_stocks_gpt4`` instance of the ``default_two_agents`` scenario:
 
 ``./results/default_two_agents/two_agent_stocks_gpt4/0``
 ``./results/default_two_agents/two_agent_stocks_gpt4/1``
@@ -71,7 +71,7 @@ For example, consider the following folders:
 
 ``./results/default_two_agents/two_agent_stocks_gpt4/9``
 
-This folder holds the results for the ``two_agent_stocks_gpt4`` instance of the ``default_two_agents`` scenario. The ``0`` folder contains the results of the first run. The ``1`` folder contains the results of the second run, and so on. You can think of the _instance_ as mapping to a prompt, or a unique set of parameters, while the _scenario_ defines the template in which those parameters are input.
+Each folder contains the results of a specific run, identified by the repetition number. The _instance_ maps to a unique set of parameters or a prompt, while the _scenario_ represents the template for those parameters.
 
 Within each folder, you will find the following files:
 
