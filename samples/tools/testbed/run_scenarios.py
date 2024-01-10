@@ -103,7 +103,8 @@ except Exception as e:
                     os.makedirs(results_repetition, exist_ok=True)
                     expand_scenario(scenario_dir, instance, os.path.join(results_repetition, "scenario.py"))
 
-                    # Also copy the contents of INCLUDES_DIR
+                    	# Copy the contents of INCLUDES_DIR to the results folder after running the scenario
+		# Copy the contents of INCLUDES_DIR
                         for item in os.listdir(INCLUDES_DIR):
                         for item in os.listdir(INCLUDES_DIR):
                         if item.endswith(".example"):
