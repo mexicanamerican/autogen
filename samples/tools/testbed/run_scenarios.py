@@ -21,7 +21,8 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
     Run a set testbed scenarios a given number of times.
 
     Args:
-        scenario (path):    The file or folder containing the scenario JSONL instances. If given a folder, then
+        The JSONL scenario file to run. If a directory is specified, then
+                            all JSONL files in the folder will be loaded and run. (default: ./scenarios)    The file or folder containing the scenario JSONL instances. If given a folder, then
                             all JSONL files in the folder will be loaded and run.
         n_repeats (int):    The number of times each scenario instance will be repeated
         is_native (bool):   True if the scenario should be run locally rather than in Docker (proceed with caution!)
