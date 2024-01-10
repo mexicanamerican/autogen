@@ -17,7 +17,7 @@ if 'GITHUB_ACTIONS' in os.environ:
 INCLUDES_DIR = "includes"
 
 
-def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results"):
+def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="results" try:):
     """
     Run a set testbed scenarios a given number of times.
 
@@ -31,6 +31,8 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
     """
 
     files = []
+except Exception as e:
+    print(f"Error in run_scenarios: {str(e)}")
 
     # Figure out which files or folders we are working with
     if os.path.isfile(scenario):
@@ -47,7 +49,7 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
 
             files.append(scenario_file)
     else:
-        print(f'Error processing scenario: {scenario_file}. Continuing to the next instance.')
+        raise ValueError(f'Error processing scenario: {scenario_file}. Cannot proceed with this instance.')
 
     # Run all the scenario files
     for scenario_file in files:
