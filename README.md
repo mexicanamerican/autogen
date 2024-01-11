@@ -52,12 +52,31 @@ The easiest way to start playing is
 AutoGen requires **Python version >= 3.8, < 3.12**. It can be installed from pip:
 
 ```bash
-pip install pyautogen
+pip install pyautogen[dev]
 ```
 
 Minimal dependencies are installed without extra options. You can install extra options based on the feature you need.
 
-<!-- For example, use the following to install the dependencies needed by the [`blendsearch`](https://microsoft.github.io/FLAML/docs/Use-Cases/Tune-User-Defined-Function#blendsearch-economical-hyperparameter-optimization-with-blended-search-strategy) option.
+To run the tests, use the following command:
+
+```bash
+cd test
+coverage run -m pytest
+cd ..
+```
+
+```bash
+cd test
+coverage run -m pytest
+cd ..
+```
+
+To view the coverage report, use the following command:
+
+```bash
+coverage report -m
+cd ..
+```
 ```bash
 pip install "pyautogen[blendsearch]"
 ``` -->
