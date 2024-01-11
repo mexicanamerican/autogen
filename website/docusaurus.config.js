@@ -6,7 +6,7 @@ module.exports = {
   title: 'AutoGen',
   tagline: 'Enable Next-Gen Large Language Model Applications',
   url: 'https://github.com/microsoft/autogen',
-  baseUrl: '/autogen',
+  baseUrl: '/autogen/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/ag.ico',
