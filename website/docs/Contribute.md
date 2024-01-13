@@ -31,7 +31,7 @@ When you submit an issue to [GitHub](https://github.com/microsoft/autogen/issues
 follow these guidelines! This will make it a lot easier to provide you with good
 feedback:
 
-- The ideal bug report contains a short reproducible code snippet. This way
+- The ideal bug report includes a specific short reproducible code snippet and provides full traceback if an exception is raised and specifies the operating system type, version number, and Python, autogen, and scikit-learn versions snippet. This way
   anyone can try to reproduce the bug easily (see [this](https://stackoverflow.com/help/mcve) for more details). If your snippet is
   longer than around 50 lines, please link to a [gist](https://gist.github.com) or a GitHub repo.
 
@@ -41,7 +41,7 @@ feedback:
   your **Python, autogen, scikit-learn versions**. The version of autogen
   can be found by running the following code snippet:
 ```python
-import autogen
+import autogen as ag
 print(autogen.__version__)
 ```
 
