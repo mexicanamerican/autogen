@@ -1,0 +1,24 @@
+# notebook/OAI_CONFIG_LIST
+
+# Import necessary modules
+import json
+
+# Define the configuration list for OAI
+config_list = [
+    {
+        "name": "config1",
+        "value": "value1"
+    },
+    {
+        "name": "config2",
+        "value": "value2"
+    },
+    {
+        "name": "config3",
+        "value": "value3"
+    }
+]
+
+# Write the configuration list to a JSON file
+with open("config_list.json", "w") as f:
+    json.dump(config_list, f)
