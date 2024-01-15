@@ -21,6 +21,15 @@ When you submit a pull request, a CLA bot will automatically determine whether y
 a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
 provided by the bot. You will only need to do this once across all repos using our CLA.
 
+When you submit a bug report related to running scenarios using the `run_scenarios.py` script, please ensure that it includes the following information:
+
+- A short reproducible code snippet, ideally in the form of a [gist](https://gist.github.com) or a GitHub repo if the snippet is longer than around 50 lines.
+- The full traceback if an exception is raised.
+- Operating system type and version number, as well as your Python, autogen, scikit-learn versions.
+
+Additionally, please ensure that all code snippets and error messages are formatted in
+an appropriate code blocks. See [Creating and highlighting code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks) for more details.
+
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
@@ -49,6 +58,7 @@ print(autogen.__version__)
 ```
 
 - Please ensure all **code snippets and error messages are formatted in
+an appropriate code blocks. See [Creating and highlighting code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks) for more details.
   appropriate code blocks**.  See [Creating and highlighting code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks)
   for more details.
 
@@ -114,6 +124,8 @@ We have provided the configuration in [devcontainer](https://github.com/microsof
 
 Before pushing changes, it is important to run the tests locally. First, make sure you have the necessary dependencies installed. Use the following steps to install the necessary dependencies and run the tests using the `pytest` command:
 
+### Running Tests Locally
+
 ### Pre-commit
 
 Run `pre-commit install` to install pre-commit into your git hooks. Before you commit, run
@@ -159,5 +171,5 @@ yarn start
 To start a local development server, run the command `yarn start`.
 Most changes are reflected live without having to restart the server.
 
-Note:
+For additional tips and guidance, you can refer to the [contributor guide from flaml](https://microsoft.github.io/FLAML/docs/Contribute).
 some tips in this guide are based off the contributor guide from [flaml](https://microsoft.github.io/FLAML/docs/Contribute).
