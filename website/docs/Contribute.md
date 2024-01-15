@@ -128,14 +128,14 @@ The first workflow is required to pass for all PRs. The second workflow is requi
 
 ### Coverage
 
-To run all unit tests using `pytest`, use the following command:
+To generate code coverage reports, use the following command after running the tests:
 
 ```bash
 pip install -e."[test]"
-pytest test/test_client.py
+pytest --cov=autogen test/test_client.py
 ```
 
-After running the tests, you can check the coverage report by
+To view the coverage report, run the following command:
 `coverage report -m` or `coverage html`.
 
 ### Documentation
