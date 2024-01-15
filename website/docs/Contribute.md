@@ -1,5 +1,12 @@
 # Contributing
 
+## Submitting Issues
+
+When submitting an issue to [GitHub](https://github.com/microsoft/autogen/issues), please follow these guidelines to help us provide you with better support:
+
+- Describe the issue in detail, including any relevant error logs and troubleshooting information.
+- Provide the operating system type and version number, as well as Python, autogen, and scikit-learn versions.
+
 This project welcomes and encourages all forms of contributions, including but not limited to:
 
 -  Pushing patches.
@@ -27,6 +34,13 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 ## How to make a good bug report
 
+When submitting an issue to [GitHub](https://github.com/microsoft/autogen/issues), please do your best to follow these guidelines. This will make it a lot easier to provide you with good feedback:
+
+- The ideal bug report contains a short reproducible code snippet. This way anyone can try to reproduce the bug easily (see [this](https://stackoverflow.com/help/mcve) for more details). If your snippet is longer than around 50 lines, please link to a [gist](https://gist.github.com) or a GitHub repo.
+- If an exception is raised, please **provide the full traceback**.
+
+Additionally, describe the issue in detail, including any relevant error logs and troubleshooting information.
+
 When you submit an issue to [GitHub](https://github.com/microsoft/autogen/issues), please do your best to
 follow these guidelines! This will make it a lot easier to provide you with good
 feedback:
@@ -37,6 +51,7 @@ feedback:
 
 - If an exception is raised, please **provide the full traceback**.
 
+- Additionally, describe the issue in detail, including any relevant error logs and troubleshooting information.
 - Please include your **operating system type and version number**, as well as
   your **Python, autogen, scikit-learn versions**. The version of autogen
   can be found by running the following code snippet:
@@ -93,6 +108,7 @@ There is currently no formal reviewer solicitation process. Current reviewers id
 ```bash
 git clone https://github.com/microsoft/autogen.git
 pip install -e autogen
+pip install scikit-learn
 ```
 
 ### Docker
