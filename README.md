@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/pyautogen.svg)](https://badge.fury.io/py/pyautogen)
+[![PyPI version and installation badges](https://badge.fury.io/py/pyautogen.svg)](https://badge.fury.io/py/pyautogen)
 [![Build](https://github.com/microsoft/autogen/actions/workflows/python-package.yml/badge.svg)](https://github.com/microsoft/autogen/actions/workflows/python-package.yml)
 ![Python Version](https://img.shields.io/badge/3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue)
 [![Downloads](https://static.pepy.tech/badge/pyautogen/week)](https://pepy.tech/project/pyautogen)
@@ -55,7 +55,7 @@ AutoGen requires **Python version >= 3.8, < 3.12**. It can be installed from pip
 pip install pyautogen
 ```
 
-Minimal dependencies are installed without extra options. You can install extra options based on the feature you need.
+<section><h2>Minimal Dependencies</h2><p>Minimal dependencies are installed without extra options. You can install extra options based on the feature you need. </p><p><a href="https://microsoft.github.io/autogen/docs/Installation">Find more options in Installation Documentation</a>.</p></section> are installed without extra options. You can install extra options based on the feature you need.
 
 <!-- For example, use the following to install the dependencies needed by the [`blendsearch`](https://microsoft.github.io/FLAML/docs/Use-Cases/Tune-User-Defined-Function#blendsearch-economical-hyperparameter-optimization-with-blended-search-strategy) option.
 ```bash
