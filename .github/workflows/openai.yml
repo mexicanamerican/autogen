@@ -28,6 +28,9 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Set up Python ${{ matrix.python-version }}
+      - name: Print PR Branch SHA
+        run: |
+          echo ${{ github.event.pull_request.head.sha }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
