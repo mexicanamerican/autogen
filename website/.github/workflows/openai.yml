@@ -1,0 +1,49 @@
+The contents of the updated `openai.yml` workflow file:
+
+name: OpenAI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
+
+      - name: Build website
+        run: |
+          cd website
+          yarn install
+          yarn build
+
+      - name: Deploy website
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/build
+
+      - name: Notify success
+        run: echo "Build successful"
+
+When writing unit tests, I will ensure that all steps in the workflow are covered and tested. I will create mocks for external dependencies and simulate different scenarios to cover all edge cases.
+
+Commit message: "feat/fix: Update openai.yml workflow to fix failing GitHub Actions run"
