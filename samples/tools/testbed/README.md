@@ -82,16 +82,31 @@ All scenarios are stored in JSONL files in the ``./scenarios'' directory. Each l
 {
    "id": string,
    "template": filename,
-   "values" {
+   "values": {
        "field_name1": string,
        "field_name2": string,
        ...
        "field_nameN": string
    }
 }
+}
 ```
 
 For example:
+```json
+{
+    "id": "two_agent_stocks_gpt4",
+    "template": "default_two_agents.py",
+    "values": {
+        "
+__MODEL
+__": "gpt-4",
+        "
+__PROMPT
+__": "Plot and save to disk a chart of NVDA and TESLA stock price YTD."
+    }
+}
+```
 
 ```
 {
