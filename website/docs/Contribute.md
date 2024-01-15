@@ -118,6 +118,16 @@ Run `pre-commit install` to install pre-commit into your git hooks. Before you c
 
 Tests are automatically run via GitHub actions. There are two workflows:
 1. [build.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/build.yml)
+
+### Troubleshooting GitHub Actions Failures
+
+If you encounter GitHub Actions failures, consider the following potential solutions:
+- Check the error logs to identify the root cause of the failure.
+- Ensure that the dependencies, environment setup, and configuration files are correct and up-to-date.
+- Review the GitHub Actions workflow visualization tool to understand the sequence of steps and identify any potential issues.
+- Consult the GitHub Actions documentation and community forums for additional guidance and best practices.
+
+For more detailed instructions on how to troubleshoot and fix GitHub Actions failures, refer to the GitHub Actions documentation and community resources.
 1. [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml)
 
 The first workflow is required to pass for all PRs. The second workflow is required for changes that affect the openai tests. The second workflow requires approval to run. When writing tests that require openai, please use [`pytest.mark.skipif`](https://github.com/microsoft/autogen/blob/main/test/test_client.py#L13) to make them run in one python version only when openai is installed. If additional dependency for this test is required, install the dependency in the corresponding python version in [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml).
