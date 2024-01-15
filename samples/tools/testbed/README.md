@@ -2,7 +2,7 @@
 
 The Autogen Testbed environment is a tool for repeatedly running a set of pre-defined Autogen scenarios in a setting with tightly-controlled initial conditions. With each run, Autogen will start from a blank slate, working out what code needs to be written, and what libraries or dependencies to install. The results of each run are logged, and can be ingested by analysis or metrics scripts (see the HumanEval example later in this README). By default, all runs are conducted in freshly-initialized docker containers, providing the recommended level of consistency and safety.
 
-This Testbed sample has been tested in, and is known to work with, Autogen versions 0.1.14 and 0.2.0b1
+The Autogen Testbed environment is a tool for repeatedly running a set of pre-defined Autogen scenarios in a setting with tightly-controlled initial conditions. With each run, Autogen will start from a blank slate, working out what code needs to be written, and what libraries or dependencies to install. The results of each run are logged, and can be ingested by analysis or metrics scripts (see the HumanEval example later in this README). By default, all runs are conducted in freshly-initialized docker containers, providing the recommended level of consistency and safety. This Testbed sample has been tested in, and is known to work with, Autogen versions 0.1.14 and 0.2.0b1
 
 ## Setup
 
@@ -59,7 +59,20 @@ options:
 
 The Testbed stores results in a folder hierarchy with the following template:
 
+The Testbed stores results in a folder hierarchy with the following template:
+
 ``./results/[scenario]/[instance_id]/[repetition]``
+
+For example, consider the following folders:
+
+``./results/default_two_agents/two_agent_stocks_gpt4/0``
+``./results/default_two_agents/two_agent_stocks_gpt4/1``
+
+...
+
+``./results/default_two_agents/two_agent_stocks_gpt4/9``
+
+This folder holds the results for the ``two_agent_stocks_gpt4`` instance of the ``default_two_agents`` scenario. The ``0`` folder contains the results of the first run. The ``1`` folder contains the results of the second run, and so on. You can think of the _instance_ as mapping to a prompt, or a unique set of parameters, while the _scenario_ defines the template in which those parameters are input.
 
 For example, consider the following folders:
 
@@ -79,6 +92,10 @@ Within each folder, you will find the following files:
 - *chat_completions.json*: a log of all OpenAI ChatCompletions, as logged by ``autogen.ChatCompletion.start_logging(compact=False)``
 - *[agent]_messages.json*: for each Agent, a log of their messages dictionaries
 - *./coding*: A directory containing all code written by Autogen, and all artifacts produced by that code.
+
+## Scenario Templating
+
+All scenarios are stored in JSONL files in the ``./scenarios'' directory. Each line of a scenario file is a JSON object with the following schema:
 
 ## Scenario Templating
 
