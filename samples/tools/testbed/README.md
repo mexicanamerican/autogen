@@ -28,7 +28,8 @@ To run the Testbed, execute the `run_scenarios.py` script to start the testbed s
 To run the Testbed in GitHub Actions, add a workflow file (e.g., testbed.yml) to your repository. Configure the workflow to run the run_scenarios.py script as a step. You can use the GitHub Actions environment variables to customize the Testbed execution. For example, you can override the number of repetitions by setting the REPEAT environment variable in the workflow file.. You can use the GitHub Actions environment variables to customize the Testbed execution. For example, you can override the number of repetitions by setting the REPEAT environment variable in the workflow file.
 
 The default it to repeat this scenario 10 times. This can be costly. To run each scenario only once, use:
-``python run_scenarios.py --repeat 1``
+To execute the `run_scenarios.py` script with a single repetition, use the following command:``
+python run_scenarios.py --repeat 1
 
 
 The run_scenarios.py script also allows a number of command-line arguments to control various parameters of execution. Type ``python run_scenarios.py -h`` to explore these options:
