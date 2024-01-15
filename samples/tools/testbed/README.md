@@ -2,31 +2,37 @@
 
 The Autogen Testbed environment is a tool for repeatedly running a set of pre-defined Autogen scenarios in a setting with tightly-controlled initial conditions. With each run, Autogen will start from a blank slate, working out what code needs to be written, and what libraries or dependencies to install. The results of each run are logged, and can be ingested by analysis or metrics scripts (see the HumanEval example later in this README). By default, all runs are conducted in freshly-initialized docker containers, providing the recommended level of consistency and safety.
 
-This Testbed sample has been tested in, and is known to work with, Autogen versions 0.1.14 and 0.2.0b1
+The Autogen Testbed environment is a tool for repeatedly running a set of pre-defined Autogen scenarios in a setting with tightly-controlled initial conditions. With each run, Autogen will start from a blank slate, working out what code needs to be written, and what libraries or dependencies to install. The results of each run are logged, and can be ingested by analysis or metrics scripts (see the HumanEval example later in this README). By default, all runs are conducted in freshly-initialized docker containers, providing the recommended level of consistency and safety. This Testbed sample has been tested in, and is known to work with, Autogen versions 0.1.14 and 0.2.0b1
 
 ## Setup
 
-Before you begin, you must configure your API keys for use with the Testbed. As with other Autogen applications, the Testbed will look for the OpenAI keys in a file in the current working directy, or environment variable named, OAI_CONFIG_LIST. This can be overrriden using a command-line parameter described later.
+Before you begin, you must configure your API keys for use with the Testbed. As with other Autogen applications, the Testbed will look for the OpenAI keys in a file in the current working directory, or environment variable named, OAI_CONFIG_LIST. This can be overridden using a command-line parameter described later.
 
-For some scenarios, additional keys may be required (e.g., keys for the Bing Search API). These can be added to an `ENV` file in the `includes` folder. A sample has been provided in ``includes/ENV.example``. Edit ``includes/ENV`` as needed.
+For some scenarios, additional keys may be required (e.g., keys for the Bing Search API). These can be added to an `ENV` file in the `includes` folder. A sample has been provided in `includes/ENV.example`. Edit `includes/ENV` as needed.
 
-The Testbed also requires Docker (Desktop or Engine) AND the __python docker__ library. **It will not run in codespaces**, unless you opt for native execution (with is strongly discouraged). To install Docker Desktop see [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/). To install the Python library:
+The Testbed also requires Docker (Desktop or Engine) and the `python docker` library. **It will not run in codespaces**, unless you opt for native execution (which is strongly discouraged). To install Docker Desktop, see [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/). To install the Python library, use the following command:
+
+``pip install docker``
+
+For some scenarios, additional keys may be required (e.g., keys for the Bing Search API). These can be added to an `ENV` file in the `includes` folder. A sample has been provided in `includes/ENV.example`. Edit `includes/ENV` as needed.
+
+The Testbed also requires Docker (Desktop or Engine) and the `python docker` library. **It will not run in codespaces**, unless you opt for native execution (which is strongly discouraged). To install Docker Desktop, see [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/). To install the Python library, use the following command:
 
 ``pip install docker``
 
 ## Running the Testbed
 
-To run the Testbed, simply execute
-``python run_scenarios.py``
+To run the Testbed, execute the `run_scenarios.py` script to start the testbed scenario.
 
 ## Running the Testbed in GitHub Actions
 To run the Testbed in GitHub Actions, add a workflow file (e.g., testbed.yml) to your repository. Configure the workflow to run the run_scenarios.py script as a step. You can use the GitHub Actions environment variables to customize the Testbed execution. For example, you can override the number of repetitions by setting the REPEAT environment variable in the workflow file.. You can use the GitHub Actions environment variables to customize the Testbed execution. For example, you can override the number of repetitions by setting the REPEAT environment variable in the workflow file.
 
 The default it to repeat this scenario 10 times. This can be costly. To run each scenario only once, use:
-``python run_scenarios.py --repeat 1``
+To execute the `run_scenarios.py` script with a single repetition, use the following command:``
+python run_scenarios.py --repeat 1
 
 
-The run_scenarios.py script also allows a number of command-line arguments to control various parameters of execution. Type ``python run_scenarios.py -h`` to explore these options:
+The run_scenarios.py script also allows a number of command-line arguments to control various parameters of execution. Type `python run_scenarios.py -h` to explore these options.
 
 ```
 run_scenarios.py will run the specified autogen scenarios for a given number of repetitions and record all logs and trace information. When running in a Docker environment (default), each run will begin from a common, tightly controlled, environment. The resultant logs can then be further processed by other scripts to produce metrics.
@@ -53,7 +59,20 @@ options:
 
 The Testbed stores results in a folder hierarchy with the following template:
 
+The Testbed stores results in a folder hierarchy with the following template:
+
 ``./results/[scenario]/[instance_id]/[repetition]``
+
+For example, consider the following folders:
+
+``./results/default_two_agents/two_agent_stocks_gpt4/0``
+``./results/default_two_agents/two_agent_stocks_gpt4/1``
+
+...
+
+``./results/default_two_agents/two_agent_stocks_gpt4/9``
+
+This folder holds the results for the ``two_agent_stocks_gpt4`` instance of the ``default_two_agents`` scenario. The ``0`` folder contains the results of the first run. The ``1`` folder contains the results of the second run, and so on. You can think of the _instance_ as mapping to a prompt, or a unique set of parameters, while the _scenario_ defines the template in which those parameters are input.
 
 For example, consider the following folders:
 
@@ -73,6 +92,10 @@ Within each folder, you will find the following files:
 - *chat_completions.json*: a log of all OpenAI ChatCompletions, as logged by ``autogen.ChatCompletion.start_logging(compact=False)``
 - *[agent]_messages.json*: for each Agent, a log of their messages dictionaries
 - *./coding*: A directory containing all code written by Autogen, and all artifacts produced by that code.
+
+## Scenario Templating
+
+All scenarios are stored in JSONL files in the ``./scenarios'' directory. Each line of a scenario file is a JSON object with the following schema:
 
 ## Scenario Templating
 
