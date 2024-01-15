@@ -25,7 +25,8 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## How to make a good bug report
+## How to make a good bug report related to running scenarios using the `run_scenarios.py` script:
+When you submit an issue to [GitHub](https://github.com/microsoft/autogen/issues) related to running scenarios using the `run_scenarios.py` script, please do your best to follow these guidelines! This will make it a lot easier to provide you with good feedback:
 
 When you submit an issue to [GitHub](https://github.com/microsoft/autogen/issues), please do your best to
 follow these guidelines! This will make it a lot easier to provide you with good
@@ -38,6 +39,8 @@ feedback:
 - If an exception is raised, please **provide the full traceback**.
 
 - Please include your **operating system type and version number**, as well as
+  your **Python, autogen, scikit-learn versions**. The version of autogen
+  can be found by running the following code snippet:
   your **Python, autogen, scikit-learn versions**. The version of autogen
   can be found by running the following code snippet:
 ```python
