@@ -112,24 +112,20 @@ docker run -it autogen-dev
 If you use vscode, you can open the autogen folder in a [Container](https://code.visualstudio.com/docs/remote/containers).
 We have provided the configuration in [devcontainer](https://github.com/microsoft/autogen/blob/main/.devcontainer). They can be used in GitHub codespace too. Developing
 
-### Run Tests Locally
-
-Before pushing the changes, it is recommended to run the tests locally. Use the following steps to run the tests using `pytest` command: AutoGen in dev containers is recommended.
+Before pushing changes, it is important to run the tests locally. First, make sure you have the necessary dependencies installed. Use the following steps to install the necessary dependencies and run the tests using the `pytest` command:
 
 ### Pre-commit
 
 Run `pre-commit install` to install pre-commit into your git hooks. Before you commit, run
 `pre-commit run` to check if you meet the pre-commit requirements. If you use Windows (without WSL) and can't commit after installing pre-commit, you can run `pre-commit uninstall` to uninstall the hook. In WSL or Linux this is supposed to work.
 
-### Write tests
+### Running Tests Locally
 
-Tests can be run locally before pushing the changes. To run the tests using `pytest` command, use the following steps: There are two workflows:
-1. [build.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/build.yml)
-1. [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml)
+Before pushing changes, it is important to run the tests locally. First, make sure you have the necessary dependencies installed. Use the following steps to install the necessary dependencies and run the tests using the `pytest` command:
 
-The first workflow is required to pass for all PRs. The second workflow is required for changes that affect the openai tests. The second workflow requires approval to run. When writing tests that require openai, please use [`pytest.mark.skipif`](https://github.com/microsoft/autogen/blob/main/test/test_client.py#L13) to make them run in one python version only when openai is installed. If additional dependency for this test is required, install the dependency in the corresponding python version in [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml).
+### Code Coverage
 
-### Coverage
+To generate code coverage reports, use the following command after running the tests:
 
 To generate code coverage reports, use the following command after running the tests:
 
