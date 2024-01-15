@@ -244,7 +244,7 @@ echo SCENARIO COMPLETE !#!#
 if __name__ == "__main__":
     script_name = os.path.basename(__file__)
     parser = argparse.ArgumentParser(
-        description=f"{script_name} will run the specified autogen scenarios for a given number of repetitions and record all logs and trace information. When running in a Docker environment (default), each run will begin from a common, tightly controlled, environment. The resultant logs can then be further processed by other scripts to produce metrics.".strip()
+        description=f"{script_name} will run the specified autogen scenarios for a given number of repetitions and record all logs and trace information. When running in a Docker environment (default), each run will begin from a common, tightly controlled environment. The resultant logs can then be further processed by other scripts to produce metrics.\n\nTROUBLESHOOTING:\n\nIf you encounter any issues during scenario execution, please refer to the documentation for guidance on troubleshooting common issues and running scenarios natively."
     )
 
     parser.add_argument(

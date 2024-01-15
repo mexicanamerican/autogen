@@ -20,7 +20,7 @@ To run the Testbed, simply execute
 ``python run_scenarios.py``
 
 ## Running the Testbed in GitHub Actions
-To run the Testbed in GitHub Actions, add a workflow file (e.g., testbed.yml) to your repository. Configure the workflow to run the run_scenarios.py script as a step. You can use the GitHub Actions environment variables to customize the Testbed execution. For example, you can override the number of repetitions by setting the REPEAT environment variable in the workflow file.
+To run the Testbed in GitHub Actions, add a workflow file (e.g., testbed.yml) to your repository. Configure the workflow to run the run_scenarios.py script as a step. You can use the GitHub Actions environment variables to customize the Testbed execution. For example, you can override the number of repetitions by setting the REPEAT environment variable in the workflow file.. You can use the GitHub Actions environment variables to customize the Testbed execution. For example, you can override the number of repetitions by setting the REPEAT environment variable in the workflow file.
 
 The default it to repeat this scenario 10 times. This can be costly. To run each scenario only once, use:
 ``python run_scenarios.py --repeat 1``
@@ -51,7 +51,7 @@ options:
 
 ## Results
 
-By default, the Testbed stores results in a folder heirarchy with the following template:
+The Testbed stores results in a folder hierarchy with the following template:
 
 ``./results/[scenario]/[instance_id]/[repetition]``
 
@@ -82,16 +82,31 @@ All scenarios are stored in JSONL files in the ``./scenarios'' directory. Each l
 {
    "id": string,
    "template": filename,
-   "values" {
+   "values": {
        "field_name1": string,
        "field_name2": string,
        ...
        "field_nameN": string
    }
 }
+}
 ```
 
 For example:
+```json
+{
+    "id": "two_agent_stocks_gpt4",
+    "template": "default_two_agents.py",
+    "values": {
+        "
+__MODEL
+__": "gpt-4",
+        "
+__PROMPT
+__": "Plot and save to disk a chart of NVDA and TESLA stock price YTD."
+    }
+}
+```
 
 ```
 {
@@ -150,5 +165,6 @@ Accessing this scenario-type requires downloading and converting the HumanEval d
 python utils/download_humaneval.py
 python ./run_scenarios.py --repeat 3 scenarios/human_eval_two_agents_gpt35.jsonl
 python utils/collate_human_eval.py ./results/human_eval_two_agents_gpt35 | python utils/metrics_human_eval.py > human_eval_results_gpt35.csv
-cat human_eval_results_gpt35.csv
+# Example command to view the computed metrics
+# cat human_eval_results_gpt35.csv
 ```

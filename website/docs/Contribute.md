@@ -25,7 +25,8 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## How to make a good bug report
+## How to make a good bug report related to running scenarios using the `run_scenarios.py` script:
+When you submit an issue to [GitHub](https://github.com/microsoft/autogen/issues) related to running scenarios using the `run_scenarios.py` script, please do your best to follow these guidelines! This will make it a lot easier to provide you with good feedback:
 
 When you submit an issue to [GitHub](https://github.com/microsoft/autogen/issues), please do your best to
 follow these guidelines! This will make it a lot easier to provide you with good
@@ -38,6 +39,8 @@ feedback:
 - If an exception is raised, please **provide the full traceback**.
 
 - Please include your **operating system type and version number**, as well as
+  your **Python, autogen, scikit-learn versions**. The version of autogen
+  can be found by running the following code snippet:
   your **Python, autogen, scikit-learn versions**. The version of autogen
   can be found by running the following code snippet:
 ```python
@@ -109,24 +112,20 @@ docker run -it autogen-dev
 If you use vscode, you can open the autogen folder in a [Container](https://code.visualstudio.com/docs/remote/containers).
 We have provided the configuration in [devcontainer](https://github.com/microsoft/autogen/blob/main/.devcontainer). They can be used in GitHub codespace too. Developing
 
-### Run Tests Locally
-
-Before pushing the changes, it is recommended to run the tests locally. Use the following steps to run the tests using `pytest` command: AutoGen in dev containers is recommended.
+Before pushing changes, it is important to run the tests locally. First, make sure you have the necessary dependencies installed. Use the following steps to install the necessary dependencies and run the tests using the `pytest` command:
 
 ### Pre-commit
 
 Run `pre-commit install` to install pre-commit into your git hooks. Before you commit, run
 `pre-commit run` to check if you meet the pre-commit requirements. If you use Windows (without WSL) and can't commit after installing pre-commit, you can run `pre-commit uninstall` to uninstall the hook. In WSL or Linux this is supposed to work.
 
-### Write tests
+### Running Tests Locally
 
-Tests can be run locally before pushing the changes. To run the tests using `pytest` command, use the following steps: There are two workflows:
-1. [build.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/build.yml)
-1. [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml)
+Before pushing changes, it is important to run the tests locally. First, make sure you have the necessary dependencies installed. Use the following steps to install the necessary dependencies and run the tests using the `pytest` command:
 
-The first workflow is required to pass for all PRs. The second workflow is required for changes that affect the openai tests. The second workflow requires approval to run. When writing tests that require openai, please use [`pytest.mark.skipif`](https://github.com/microsoft/autogen/blob/main/test/test_client.py#L13) to make them run in one python version only when openai is installed. If additional dependency for this test is required, install the dependency in the corresponding python version in [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml).
+### Code Coverage
 
-### Coverage
+To generate code coverage reports, use the following command after running the tests:
 
 To generate code coverage reports, use the following command after running the tests:
 
@@ -138,9 +137,9 @@ pytest --cov=autogen test/test_client.py
 To view the coverage report, run the following command:
 `coverage report -m` or `coverage html`.
 
-### Documentation
+#### Building and Testing Documentation Locally
 
-To build and test documentation locally, install [Node.js](https://nodejs.org/en/download/). For example,
+To build and test documentation locally, install [Node.js](https://nodejs.org/en/download/) by downloading and running the installer for your operating system. For example,
 
 ```bash
 nvm install --lts
@@ -157,7 +156,7 @@ pydoc-markdown
 yarn start
 ```
 
-The last command starts a local development server and opens up a browser window.
+To start a local development server, run the command `yarn start`.
 Most changes are reflected live without having to restart the server.
 
 Note:
