@@ -143,6 +143,10 @@ def run_scenario_natively(work_dir):
     with open(os.path.join("run.sh"), "wt") as f:
         f.write(
             """#
+if os.environ.get('GITHUB_ACTIONS'):
+    shebang = "#!/usr/bin/python3"
+else:
+    shebang = "#!/usr/bin/python"
 . ./ENV
 python scenario.py
 echo SCENARIO COMPLETE !#!#
