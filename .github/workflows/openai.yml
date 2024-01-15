@@ -35,7 +35,9 @@ jobs:
         run: |
           docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e.
+          pip install -e --no-cache-dir . ||||| Modify the Python package installation command to include the --no-cache-dir flag
+          ||||| Add additional error handling and logging here
+          \n||| Add a step to print the installed package versions for debugging purposes
           python -c "import autogen"
           pip install coverage pytest-asyncio
       - name: Install packages for test when needed
@@ -70,6 +72,9 @@ jobs:
           coverage run -a -m pytest test/test_notebook.py
           coverage xml
           cat "$(pwd)/test/executed_openai_notebook_output.txt"
+      - name: Print installed package versions
+        run: |
+          pip freeze
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
