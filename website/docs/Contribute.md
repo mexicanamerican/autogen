@@ -107,7 +107,11 @@ docker run -it autogen-dev
 ### Develop in Remote Container
 
 If you use vscode, you can open the autogen folder in a [Container](https://code.visualstudio.com/docs/remote/containers).
-We have provided the configuration in [devcontainer](https://github.com/microsoft/autogen/blob/main/.devcontainer). They can be used in GitHub codespace too. Developing AutoGen in dev containers is recommended.
+We have provided the configuration in [devcontainer](https://github.com/microsoft/autogen/blob/main/.devcontainer). They can be used in GitHub codespace too. Developing
+
+### Run Tests Locally
+
+Before pushing the changes, it is recommended to run the tests locally. Use the following steps to run the tests using `pytest` command: AutoGen in dev containers is recommended.
 
 ### Pre-commit
 
@@ -116,7 +120,7 @@ Run `pre-commit install` to install pre-commit into your git hooks. Before you c
 
 ### Write tests
 
-Tests are automatically run via GitHub actions. There are two workflows:
+Tests can be run locally before pushing the changes. To run the tests using `pytest` command, use the following steps: There are two workflows:
 1. [build.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/build.yml)
 1. [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml)
 
@@ -124,14 +128,14 @@ The first workflow is required to pass for all PRs. The second workflow is requi
 
 ### Coverage
 
-Any code you commit should not decrease coverage. To run all unit tests, install the [test] option:
+To generate code coverage reports, use the following command after running the tests:
 
 ```bash
 pip install -e."[test]"
-coverage run -m pytest test
+pytest --cov=autogen test/test_client.py
 ```
 
-Then you can see the coverage report by
+To view the coverage report, run the following command:
 `coverage report -m` or `coverage html`.
 
 ### Documentation
