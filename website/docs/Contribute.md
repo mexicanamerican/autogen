@@ -137,9 +137,9 @@ pytest --cov=autogen test/test_client.py
 To view the coverage report, run the following command:
 `coverage report -m` or `coverage html`.
 
-### Documentation
+#### Building and Testing Documentation Locally
 
-To build and test documentation locally, install [Node.js](https://nodejs.org/en/download/). For example,
+To build and test documentation locally, install [Node.js](https://nodejs.org/en/download/) by downloading and running the installer for your operating system. For example,
 
 ```bash
 nvm install --lts
@@ -156,7 +156,7 @@ pydoc-markdown
 yarn start
 ```
 
-The last command starts a local development server and opens up a browser window.
+To start a local development server, run the command `yarn start`.
 Most changes are reflected live without having to restart the server.
 
 Note:
