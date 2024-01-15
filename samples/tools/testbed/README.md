@@ -6,18 +6,23 @@ This Testbed sample has been tested in, and is known to work with, Autogen versi
 
 ## Setup
 
-Before you begin, you must configure your API keys for use with the Testbed. As with other Autogen applications, the Testbed will look for the OpenAI keys in a file in the current working directy, or environment variable named, OAI_CONFIG_LIST. This can be overrriden using a command-line parameter described later.
+Before you begin, you must configure your API keys for use with the Testbed. As with other Autogen applications, the Testbed will look for the OpenAI keys in a file in the current working directory, or environment variable named, OAI_CONFIG_LIST. This can be overridden using a command-line parameter described later.
 
-For some scenarios, additional keys may be required (e.g., keys for the Bing Search API). These can be added to an `ENV` file in the `includes` folder. A sample has been provided in ``includes/ENV.example``. Edit ``includes/ENV`` as needed.
+For some scenarios, additional keys may be required (e.g., keys for the Bing Search API). These can be added to an `ENV` file in the `includes` folder. A sample has been provided in `includes/ENV.example`. Edit `includes/ENV` as needed.
 
-The Testbed also requires Docker (Desktop or Engine) AND the __python docker__ library. **It will not run in codespaces**, unless you opt for native execution (with is strongly discouraged). To install Docker Desktop see [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/). To install the Python library:
+The Testbed also requires Docker (Desktop or Engine) and the `python docker` library. **It will not run in codespaces**, unless you opt for native execution (which is strongly discouraged). To install Docker Desktop, see [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/). To install the Python library, use the following command:
+
+``pip install docker``
+
+For some scenarios, additional keys may be required (e.g., keys for the Bing Search API). These can be added to an `ENV` file in the `includes` folder. A sample has been provided in `includes/ENV.example`. Edit `includes/ENV` as needed.
+
+The Testbed also requires Docker (Desktop or Engine) and the `python docker` library. **It will not run in codespaces**, unless you opt for native execution (which is strongly discouraged). To install Docker Desktop, see [https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/). To install the Python library, use the following command:
 
 ``pip install docker``
 
 ## Running the Testbed
 
-To run the Testbed, simply execute
-``python run_scenarios.py``
+To run the Testbed, execute the `run_scenarios.py` script to start the testbed scenario.
 
 ## Running the Testbed in GitHub Actions
 To run the Testbed in GitHub Actions, add a workflow file (e.g., testbed.yml) to your repository. Configure the workflow to run the run_scenarios.py script as a step. You can use the GitHub Actions environment variables to customize the Testbed execution. For example, you can override the number of repetitions by setting the REPEAT environment variable in the workflow file.. You can use the GitHub Actions environment variables to customize the Testbed execution. For example, you can override the number of repetitions by setting the REPEAT environment variable in the workflow file.
