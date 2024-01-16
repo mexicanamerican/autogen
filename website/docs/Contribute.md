@@ -112,11 +112,11 @@ We have provided the configuration in [devcontainer](https://github.com/microsof
 ### Pre-commit
 
 Run `pre-commit install` to install pre-commit into your git hooks. Before you commit, run
-`pre-commit run` to check if you meet the pre-commit requirements. If you use Windows (without WSL) and encounter any issues with committing after installing pre-commit, please refer to the additional instructions below:
+`pre-commit run` to check if you meet the pre-commit requirements.
 
 ### Write tests
 
-Tests are automatically run via GitHub actions. There are two workflows:
+Tests are run using GitHub actions.:
 1. [build.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/build.yml)
 1. [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml)
 
