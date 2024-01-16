@@ -1,6 +1,6 @@
 # Getting Started
 
-<!-- ### Welcome to AutoGen, a library for enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework! -->
+<!-- ### Hello and welcome to AutoGen! A framework for multi-agent conversation applications powered by Large Language Models. -->
 
 AutoGen is a framework that enables development of LLM applications using multiple agents that can converse with each other to solve tasks. AutoGen agents are customizable, conversable, and seamlessly allow human participation. They can operate in various modes that employ combinations of LLMs, human inputs, and tools.
 
@@ -43,7 +43,7 @@ The figure below shows an example conversation flow with AutoGen.
 * [Code examples](/docs/Examples/AgentChat).
 * [Documentation](/docs/Use-Cases/agent_chat).
 
-#### Enhanced LLM Inferences
+#### Advanced LLM Inference Functionalities
 Autogen also helps maximize the utility out of the expensive LLMs such as ChatGPT and GPT-4. It offers enhanced LLM inference with powerful functionalites like tuning, caching, error handling, templating. For example, you can optimize generations by LLM with your own tuning data, success metrics and budgets.
 ```python
 # perform tuning for openai<1
@@ -63,7 +63,7 @@ response = autogen.Completion.create(context=test_instance, **config)
 * [Code examples](/docs/Examples/Inference).
 * [Documentation](/docs/Use-Cases/enhanced_inference).
 
-### Where to Go Next ?
+### What's Next for AutoGen ?
 
 * Understand the use cases for [multi-agent conversation](/docs/Use-Cases/agent_chat) and [enhanced LLM inference](/docs/Use-Cases/enhanced_inference).
 * Find [code examples](/docs/Examples/AgentChat).
