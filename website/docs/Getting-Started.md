@@ -28,6 +28,19 @@ By automating chat among multiple capable agents, one can easily make them colle
 from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
 
 # Load LLM inference endpoints from an env variable or a file
+
+import os
+import argparse
+import docker
+import os
+
+if os.getenv('GITHUB_ACTIONS'):
+    repeat_param = '--repeat 1'
+else:
+    repeat_param = '--repeat 10'
+
+# Code execution parameters
+exec_params = f"exec {repeat_param}"
 # See https://microsoft.github.io/autogen/docs/FAQ#set-your-api-endpoints
 # and OAI_CONFIG_LIST_sample.json
 config_list = config_list_from_json(env_or_file="OAI_CONFIG_LIST")
