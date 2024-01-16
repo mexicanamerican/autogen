@@ -32,7 +32,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install packages and dependencies
-        run: |
+        run: | pip install package_name
           docker --version
           python -m pip install --upgrade pip wheel
           pip install -e.
