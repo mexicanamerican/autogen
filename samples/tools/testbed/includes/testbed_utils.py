@@ -17,13 +17,13 @@ def init():
         None
     """
 
-    # Print some information about the run
+    # Check and create necessary files and directories for logging functionality
     with open("timestamp.txt", "wt") as f:
         f.write("Timestamp: " + datetime.now().isoformat() + "\n")
         f.write("pyautogen version: " + lib_version("pyautogen") + "\n")
 
 
-def finalize(agents):
+def finalize(logger, agents):
     """Helper function to finalize logging in a testbed scenario.
     Calling this function will save all the chat completions logged
     by Autogen to disk, and will save the messages dictionaries of
@@ -37,6 +37,10 @@ def finalize(agents):
     """
 
     script_dir = os.path.dirname(os.path.realpath(__file__))
+    try:
+        os.mkdir(os.path.join(script_dir, 'logs'))
+    except Exception as e:
+        logger.exception('An error occurred while creating the logs directory')
 
     def messages_to_json(agent):
         messages = dict()
