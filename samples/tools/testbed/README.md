@@ -16,7 +16,7 @@ The Testbed also requires Docker (Desktop or Engine) AND the __python docker__ l
 
 ## Running the Testbed
 
-To run the Testbed, simply execute
+To run the Testbed scenarios, execute
 ``python run_scenarios.py``
 
 The default it to repeat this scenario 10 times. This can be costly. To run each scenario only once, use:
@@ -42,13 +42,13 @@ options:
   -c CONFIG, --config CONFIG
                 The environment variable name or path to the OAI_CONFIG_LIST (default: OAI_CONFIG_LIST).
 
-  --native      Run the scenarios natively rather than in docker.
+  --native      WARNING: Running the scenarios natively is not advisable and should be done with great caution.
                 NOTE: This is not advisable, and should be done with great caution.
 ```
 
 ## Results
 
-By default, the Testbed stores results in a folder heirarchy with the following template:
+
 
 ``./results/[scenario]/[instance_id]/[repetition]``
 
