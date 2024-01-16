@@ -26,7 +26,7 @@ The default it to repeat this scenario 10 times. This can be costly. To run each
 The run_scenarios.py script also allows a number of command-line arguments to control various parameters of execution. Type ``python run_scenarios.py -h`` to explore these options:
 
 ```
-run_scenarios.py will run the specified autogen scenarios for a given number of repetitions and record all logs and trace information. When running in a Docker environment (default), each run will begin from a common, tightly controlled, environment. The resultant logs can then be further processed by other scripts to produce metrics.
+run_scenarios.py will run the specified autogen scenarios for a given number of repetitions and record all logs and trace information. When running in a Docker environment. The run_scenarios.py script also allows a number of command-line arguments to control various parameters of execution. Type `python run_scenarios.py -h` to explore these options: (default), each run will begin from a common, tightly controlled, environment. The resultant logs can then be further processed by other scripts to produce metrics.
 
 positional arguments:
   scenario      The JSONL scenario file to run. If a directory is specified,
@@ -74,6 +74,19 @@ Within each folder, you will find the following files:
 ## Scenario Templating
 
 All scenarios are stored in JSONL files in the ``./scenarios'' directory. Each line of a scenario file is a JSON object with the following schema:
+
+```
+{
+   "id": string,
+   "template": filename,
+   "values" {
+       "field_name1": string,
+       "field_name2": string,
+       ...
+       "field_nameN": string
+   }
+}
+``` Each line of a scenario file is a JSON object with the following schema:
 
 ```
 {
