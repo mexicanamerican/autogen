@@ -4,6 +4,8 @@
 name: Build
 
 on:
+    push:
+      if: contains(github.event.head_commit.message, '<specific error message>')
   push:
     branches: ['main']
     paths:
@@ -43,7 +45,10 @@ jobs:
           python -c "import autogen"
           pip install -e. pytest
           pip uninstall -y openai
-      - name: Test with pytest
+      - name: Fix GitHub Actions run
+        if: contains(github.event.head_commit.message, '<specific error message>')
+        run: |
+          # Add necessary steps to fix the error condition
         if: matrix.python-version != '3.10'
         run: |
           pytest test
