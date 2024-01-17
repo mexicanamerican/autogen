@@ -25,7 +25,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## How to make a good bug report
+## Guidelines for a good bug report
 
 When you submit an issue to [GitHub](https://github.com/microsoft/autogen/issues), please do your best to
 follow these guidelines! This will make it a lot easier to provide you with good
@@ -41,8 +41,7 @@ feedback:
   your **Python, autogen, scikit-learn versions**. The version of autogen
   can be found by running the following code snippet:
 ```python
-import autogen
-print(autogen.__version__)
+python -c "import autogen; print(autogen.__version__)"
 ```
 
 - Please ensure all **code snippets and error messages are formatted in
@@ -56,7 +55,7 @@ There is currently no formal reviewer solicitation process. Current reviewers id
 
 ## Guidance for Maintainers
 
-### General
+### General Guidelines
 
 *	Be a member of the community and treat everyone as a member. Be inclusive.
 *	Help each other and encourage mutual help.
@@ -134,7 +133,7 @@ coverage run -m pytest test
 Then you can see the coverage report by
 `coverage report -m` or `coverage html`.
 
-### Documentation
+### Documenting
 
 To build and test documentation locally, install [Node.js](https://nodejs.org/en/download/). For example,
 
