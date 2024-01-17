@@ -63,7 +63,7 @@ jobs:
           coverage run -a -m pytest test/test_notebook.py
           coverage xml
           cat "$(pwd)/test/executed_openai_notebook_output.txt"
-      - name: Upload coverage to Codecov
+
         uses: codecov/codecov-action@v3
         with:
           file: ./coverage.xml
