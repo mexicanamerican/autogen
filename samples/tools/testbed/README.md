@@ -17,7 +17,7 @@ The Testbed also requires Docker (Desktop or Engine) AND the __python docker__ l
 ## Running the Testbed
 
 To run the Testbed, simply execute
-``python run_scenarios.py``
+``python run_scenarios.py --repeat 1``
 
 The default it to repeat this scenario 10 times. This can be costly. To run each scenario only once, use:
 ``python run_scenarios.py --repeat 1``
