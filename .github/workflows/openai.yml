@@ -41,13 +41,13 @@ jobs:
               - name: Test with pytest
         if: matrix.python-version != '3.10'
         run: |
-          pytest test
+          pytest --log-cli-level ERROR test
       - name: Coverage
         if: matrix.python-version == '3.10'
         run: |
           pip install --upgrade pip && pip install -e .[mathchat]
           pip install openai --upgrade
-          coverage run -a -m pytest test
+          coverage run -a -m pytest
           coverage xml
       - name: Generate Coverage Report and Upload to Codecov
         run: |
