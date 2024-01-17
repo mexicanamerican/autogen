@@ -7,6 +7,7 @@ import sys
 import time
 import pathlib
 import argparse
+import docker
 from autogen import config_list_from_json
 
 # Location of the global includes dir. The contents of this directory will be copied to the Docker environment.
@@ -275,7 +276,7 @@ if __name__ == "__main__":
     # Warn if running natively
     if args.native:
         choice = input(
-            'WARNING: Running natively, without Docker, not only poses the usual risks of executing arbitrary AI generated code on your machine, it also makes it impossible to ensure that each test starts from a known and consistent set of initial conditions. For example, if the agents spend time debugging and installing Python libraries to solve the task, then those libraries will be available to all other runs. In other words, earlier runs can influence later runs, leading to many confounds in testing.\n\nAre you absolutely sure you want to continue with native execution? Type "Yes" exactly, and in full, to proceed: '
+            'WARNING: Handling specific issues identified in the error logs, without Docker, not only poses the usual risks of executing arbitrary AI generated code on your machine, it also makes it impossible to ensure that each test starts from a known and consistent set of initial conditions. For example, if the agents spend time debugging and installing Python libraries to solve the task, then those libraries will be available to all other runs. In other words, earlier runs can influence later runs, leading to many confounds in testing.\n\nAre you absolutely sure you want to continue with native execution? Type "Yes" exactly, and in full, to proceed: '
         )
 
         if choice.strip().lower() != "yes":
