@@ -87,7 +87,7 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
                     print(f"Running scenario {results_repetition}")
 
                     # Create the folder, and copy the script to a standard name
-                    os.mkdir(results_repetition)
+                    os.makedirs(results_repetition)
                     expand_scenario(scenario_dir, instance, os.path.join(results_repetition, "scenario.py"))
 
                     # Also copy the contents of INCLUDES_DIR
