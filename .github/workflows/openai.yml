@@ -18,20 +18,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install packages and dependencies
         run: |
           docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e.
+          pip install --upgrade pip && pip install -e.
           python -c "import autogen"
           pip install coverage pytest-asyncio
       - name: Install packages for test when needed
         if: matrix.python-version == '3.9'
         run: |
-          pip install docker
+          pip install docker --upgrade
       - name: Install dependencies for test when needed
         if: matrix.python-version == '3.10'  # test_agentchat_function_call
         run: |
@@ -45,8 +45,8 @@ jobs:
       - name: Coverage
         if: matrix.python-version == '3.10'
         run: |
-          pip install -e .[mathchat]
-          pip install openai
+          pip install --upgrade pip && pip install -e .[mathchat]
+          pip install openai --upgrade
           coverage run -a -m pytest test
           coverage xml
       - name: Generate Coverage Report and Upload to Codecov
