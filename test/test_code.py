@@ -264,7 +264,7 @@ def test_execute_code(use_docker=None):
     assert isinstance(image, str) or docker is None or os.path.exists("/.dockerenv") or use_docker is False
 
 
-def test_execute_code_raises_when_code_and_filename_are_both_none():
+def test_execute_code_raises_when_code_and_filename_are_both_none_including_code_and_filename_none():
     with pytest.raises(AssertionError):
         execute_code(code=None, filename=None)
 
