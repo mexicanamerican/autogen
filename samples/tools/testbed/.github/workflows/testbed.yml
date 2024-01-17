@@ -1,0 +1,37 @@
+name: Autogen Testbed
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  testbed-job:
+    runs-on: ubuntu-latest
+
+    env:
+      OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: docker/setup-docker@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: pip install docker
+
+      - name: Run Testbed
+        run: python run_scenarios.py --repeat 1
+
+      - name: Store Testbed results
+        uses: actions/upload-artifact@v2
+        with:
+          name: Testbed Results
+          path: ./results
