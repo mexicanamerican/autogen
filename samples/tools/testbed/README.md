@@ -17,10 +17,10 @@ The Testbed also requires Docker (Desktop or Engine) AND the __python docker__ l
 ## Running the Testbed
 
 To run the Testbed, simply execute
-``python run_scenarios.py``
+``./run_scenarios.sh``
 
 The default it to repeat this scenario 10 times. This can be costly. To run each scenario only once, use:
-``python run_scenarios.py --repeat 1``
+``./run_scenarios.sh --repeat 1``
 
 
 The run_scenarios.py script also allows a number of command-line arguments to control various parameters of execution. Type ``python run_scenarios.py -h`` to explore these options:
@@ -145,7 +145,7 @@ Accessing this scenario-type requires downloading and converting the HumanEval d
 
 ```
 python utils/download_humaneval.py
-python ./run_scenarios.py --repeat 3 scenarios/human_eval_two_agents_gpt35.jsonl
-python utils/collate_human_eval.py ./results/human_eval_two_agents_gpt35 | python utils/metrics_human_eval.py > human_eval_results_gpt35.csv
+./run_scenarios.sh --repeat 3 scenarios/human_eval_two_agents_gpt35.jsonl
+./collate_and_compute_metrics.sh ./results/human_eval_two_agents_gpt35 > human_eval_results_gpt35.csv
 cat human_eval_results_gpt35.csv
 ```
