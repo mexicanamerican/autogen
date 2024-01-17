@@ -297,7 +297,7 @@ def _test_improve():
     improved, _ = improve_function(
         "autogen/math_utils.py",
         "solve_problem",
-        "Solve math problems accurately, by avoiding calculation errors and reduce reasoning errors.",
+        "Solve math problems accurately, by avoiding calculation errors and reducing reasoning errors.",
         config_list=config_list,
     )
     with open(f"{here}/math_utils.py.improved", "w") as f:
