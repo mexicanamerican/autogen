@@ -35,7 +35,7 @@ jobs:
         run: |
           docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e. coverage pytest-asyncio
+          pip install -e. coverage pytest-asyncio nbconvert nbformat ipykernel
           python -c "import autogen"
           pip install coverage pytest-asyncio
       - name: Install packages for test when needed
