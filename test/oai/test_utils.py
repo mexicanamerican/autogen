@@ -54,7 +54,11 @@ def test_config_list_from_json():
     with open(json_file, "w") as f:
         json.dump(config_list, f, indent=4)
 
-    config_list_1 = autogen.config_list_from_json(json_file)
+    try:
+        config_list_1 = autogen.config_list_from_json(json_file)
+    except Exception as e:
+        print(f'Error loading JSON file: {str(e)}')
+        config_list_1 = []
     assert config_list == config_list_1
 
     os.environ["config_list_test"] = json.dumps(config_list)
