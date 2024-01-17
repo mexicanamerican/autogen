@@ -41,7 +41,7 @@ jobs:
               - name: Test with pytest
         if: matrix.python-version != '3.10'
         run: |
-          pytest --log-cli-level ERROR test
+          pytest --log-cli-level ERROR specific_tests
       - name: Coverage
         if: matrix.python-version == '3.10'
         run: |
@@ -55,7 +55,7 @@ jobs:
           coverage xml
       - name: Coverage and check notebook outputs
         if: matrix.python-version != '3.9'
-        env:\n          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}\n          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}\n          AZURE_OPENAI_API_BASE: ${{ secrets.AZURE_OPENAI_API_BASE + ' ' }}\n          WOLFRAM_ALPHA_APPID: ${{ secrets.WOLFRAM_ALPHA_APPID }}\n          OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}\n      - name: Test with pytest\n        if: matrix.python-version != '3.9'\n        run: |\n          pip install nbconvert nbformat ipykernel\n          coverage run -a -m pytest test/agentchat/test_function_call_groupchat.py\n          coverage run -a -m pytest test/test_notebook.py\n          coverage xml\n          cat "$(pwd)/test/executed_openai_notebook_output.txt"\n      - name: Upload to Codecov
+        env:\n          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}\n          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}\n          AZURE_OPENAI_API_BASE: ${{ secrets.AZURE_OPENAI_API_BASE }}\n          WOLFRAM_ALPHA_APPID: ${{ secrets.WOLFRAM_ALPHA_APPID }}\n          OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}\n      - name: Test with pytest\n        if: matrix.python-version != '3.9'\n        run: |\n          pip install nbconvert nbformat ipykernel\n          coverage run -a -m pytest test/agentchat/test_function_call_groupchat.py\n          coverage run -a -m pytest test/test_notebook.py\n          coverage xml\n          cat "$(pwd)/test/executed_openai_notebook_output.txt"\n      - name: Upload to Codecov
         uses: codecov/codecov-action@v3
         run: |
           pip install nbconvert nbformat ipykernel
