@@ -7,6 +7,7 @@ import sys
 import time
 import pathlib
 import argparse
+import docker
 from autogen import config_list_from_json
 
 # Location of the global includes dir. The contents of this directory will be copied to the Docker environment.
