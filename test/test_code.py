@@ -273,7 +273,11 @@ def test_execute_code_raises_when_code_and_filename_are_both_none_including_code
     sys.platform in ["darwin"],
     reason="do not run on MacOS",
 )
-def test_execute_code_nodocker():
+def test_execute_code_nodocker(use_docker=False):
+    exit_code, msg, image = execute_code('import time; time.sleep(2)', timeout=1, use_docker=False)
+    if sys.platform != 'win32':
+        assert exit_code == 0
+    assert image is None
     test_execute_code(use_docker=False)
 
 
