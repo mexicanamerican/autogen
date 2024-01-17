@@ -11,6 +11,9 @@ on:
       - 'test/**'
       - '.github/workflows/build.yml'
       - 'setup.py'
+      - 'samples/**'
+      - 'website/**'
+      - 'setup.py'
   pull_request:
     branches: ['main']
   merge_group:
@@ -37,6 +40,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install packages and dependencies
         run: |
+          pip install -e .[mathchat,test]
+          pip uninstall -y openai
           python -m pip install --upgrade pip wheel
           pip install -e .
           python -c "import autogen"
@@ -45,7 +50,11 @@ jobs:
       - name: Test with pytest
         if: matrix.python-version != '3.10'
         run: |
-                    pytest test
+          pip install -e .[mathchat,test]
+          pip uninstall -y openai
+          coverage run -a -m pytest test samples
+          coverage xml
+                    pytest test samples
       - name: Coverage
         
         run: |
