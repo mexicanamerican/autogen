@@ -16,10 +16,10 @@ The Testbed also requires Docker (Desktop or Engine) AND the __python docker__ l
 
 ## Running the Testbed
 
-To run the Testbed, simply execute
+To run the Testbed locally, simply execute
 ``python run_scenarios.py``
 
-The default it to repeat this scenario 10 times. This can be costly. To run each scenario only once, use:
+To run the Testbed using the GitHub Actions workflow, use the following command in your workflow file:
 ``python run_scenarios.py --repeat 1``
 
 
