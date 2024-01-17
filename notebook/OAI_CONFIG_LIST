@@ -1,0 +1,26 @@
+import os
+import json
+
+# Define the JSON data as a list of API configurations
+api_configurations = [
+    {
+        "model": "gpt-3.5-turbo",
+        "api_type": "open_ai"
+    },
+    {
+        "model": "gpt-4",
+        "api_type": "open_ai"
+    },
+    {
+        "model": "gpt-4-0314",
+        "api_type": "open_ai"
+    },
+    # Add more configurations as needed
+]
+
+# Create the file `notebook/OAI_CONFIG_LIST` in the same directory as the test file
+file_path = os.path.join(os.path.dirname(__file__), "notebook/OAI_CONFIG_LIST")
+
+# Write the JSON data to the file
+with open(file_path, "w") as file:
+    json.dump(api_configurations, file)
