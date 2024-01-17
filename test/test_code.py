@@ -264,7 +264,7 @@ def test_execute_code(use_docker=None):
     assert isinstance(image, str) or docker is None or os.path.exists("/.dockerenv") or use_docker is False
 
 
-def test_execute_code_raises_when_code_and_filename_are_both_none():
+def test_execute_code_raises_when_code_and_filename_are_both_none_including_code_and_filename_none():
     with pytest.raises(AssertionError):
         execute_code(code=None, filename=None)
 
@@ -273,7 +273,11 @@ def test_execute_code_raises_when_code_and_filename_are_both_none():
     sys.platform in ["darwin"],
     reason="do not run on MacOS",
 )
-def test_execute_code_nodocker():
+def test_execute_code_nodocker(use_docker=False):
+    exit_code, msg, image = execute_code('import time; time.sleep(2)', timeout=1, use_docker=False)
+    if sys.platform != 'win32':
+        assert exit_code == 0
+    assert image is None
     test_execute_code(use_docker=False)
 
 
@@ -293,7 +297,7 @@ def _test_improve():
     improved, _ = improve_function(
         "autogen/math_utils.py",
         "solve_problem",
-        "Solve math problems accurately, by avoiding calculation errors and reduce reasoning errors.",
+        "Solve math problems accurately, by avoiding calculation errors and reducing reasoning errors.",
         config_list=config_list,
     )
     with open(f"{here}/math_utils.py.improved", "w") as f:
