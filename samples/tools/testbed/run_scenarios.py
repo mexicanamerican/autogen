@@ -43,7 +43,7 @@ def run_scenarios(scenario, n_repeats, is_native, config_list, results_dir="resu
 
             files.append(scenario_file)
     else:
-        raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), scenario)
+        raise FileNotFoundError(f'File not found: {scenario}')
 
     # Run all the scenario files
     for scenario_file in files:
