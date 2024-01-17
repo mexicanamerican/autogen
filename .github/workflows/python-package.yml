@@ -34,11 +34,13 @@ jobs:
       #     use-only-tar-bz2: true
       - name: Install from source
         # This is required for the pre-commit tests
-        shell: pwsh
+        shell: python
         run: pip install .
       # - name: Conda list
       #   shell: pwsh
       #   run: conda list
+      - name: Install build dependencies
+        run: pip install twine setuptools wheel
       - name: Build
         shell: pwsh
         run: |
@@ -46,7 +48,7 @@ jobs:
           python setup.py sdist bdist_wheel
       - name: Publish to PyPI
         env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+          TWINE_USERNAME: your_pypi_username_here
+          TWINE_PASSWORD: your_pypi_password_here
         shell: pwsh
         run: twine upload dist/*
