@@ -34,7 +34,7 @@ jobs:
       #     use-only-tar-bz2: true
       - name: Install from source
         # This is required for the pre-commit tests
-        shell: pwsh
+        shell: python
         run: pip install .
       # - name: Conda list
       #   shell: pwsh
