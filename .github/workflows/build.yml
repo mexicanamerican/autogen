@@ -11,6 +11,9 @@ on:
       - 'test/**'
       - '.github/workflows/build.yml'
       - 'setup.py'
+      - 'samples/**'
+      - 'website/**'
+      - 'setup.py'
   pull_request:
     branches: ['main']
   merge_group:
