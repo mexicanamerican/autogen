@@ -3,6 +3,7 @@
 This project welcomes and encourages all forms of contributions, including but not limited to:
 
 -  Pushing patches.
+-  Contributing to the documentation build process.
 -  Code review of pull requests.
 -  Documentation, examples and test cases.
 -  Readability improvement, e.g., improvement on docstr and comments.
@@ -153,7 +154,7 @@ pydoc-markdown
 yarn start
 ```
 
-The last command starts a local development server and opens up a browser window.
+The last command starts a local development server and opens up a browser window. Make sure to verify the format of the compiled documentation.
 Most changes are reflected live without having to restart the server.
 
 Note:
