@@ -43,8 +43,16 @@ jobs:
       - name: Test Build
         run: |
           if [ -e yarn.lock ]; then
+          if [ -e yarn.lock ]; then
           yarn install --frozen-lockfile --ignore-engines
           yarn build
+          elif [ -e package-lock.json ]; then
+          npm ci
+          npm run build
+          else
+          npm i --legacy-peer-deps
+          npm run build
+          fi
           elif [ -e package-lock.json ]; then
           npm ci
           npm run build
