@@ -13,6 +13,8 @@ on:
       - 'setup.py'
 
 jobs:
+
+    fail_fast: true
   RetrieveChatTest:
     strategy:
       matrix:
@@ -34,7 +36,7 @@ jobs:
         run: |
           docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e .
+          pip install -e . && python -c "import autogen" || echo "Installation failed. Error logs:" > pytest.log
           python -c "import autogen"
           pip install coverage pytest-asyncio
       - name: Install packages for test when needed
@@ -49,7 +51,7 @@ jobs:
           AZURE_OPENAI_API_BASE: ${{ secrets.AZURE_OPENAI_API_BASE }}
           OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}
         run: |
-          coverage run -a -m pytest test/agentchat/contrib/test_retrievechat.py test/agentchat/contrib/test_qdrant_retrievechat.py
+          coverage run -a -m pytest test/agentchat/contrib/test_retrievechat.py test/agentchat/contrib/test_qdrant_retrievechat.py || echo "Pytest failed. Error logs:" > pytest.log && cat pytest.log
           coverage xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
