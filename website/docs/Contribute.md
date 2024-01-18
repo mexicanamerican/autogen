@@ -112,7 +112,11 @@ We have provided the configuration in [devcontainer](https://github.com/microsof
 ### Pre-commit
 
 Run `pre-commit install` to install pre-commit into your git hooks. Before you commit, run
-`pre-commit run` to check if you meet the pre-commit requirements. If you use Windows (without WSL) and can't commit after installing pre-commit, you can run `pre-commit uninstall` to uninstall the hook. In WSL or Linux this is supposed to work.
+`pre-commit run` to check if you meet the pre-commit requirements. If you use Windows and encounter issues with committing after installing pre-commit, consider using WSL or perform the following troubleshooting steps:
+
+- Ensure that the pre-commit hook is executable by running `chmod +x .git/hooks/pre-commit`.
+- Check that the correct version of Python is in your PATH environment variable.
+- If errors persist, consider using a development environment such as a Docker container or codespace to run pre-commit checks.
 
 ### Write tests
 
