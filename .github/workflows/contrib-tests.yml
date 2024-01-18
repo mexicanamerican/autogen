@@ -2,6 +2,10 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
 name: ContribTests
+      - name: Print error logs if pytest fails
+        if: failure()
+        run: |
+          echo "Error logs:" && cat pytest.log
 
 on:
   pull_request:
@@ -43,6 +47,8 @@ jobs:
           pip install -e .[retrievechat]
           pip uninstall -y openai
       - name: Test RetrieveChat
+        run: |
+          pytest test/test_retrieve_utils.py test/agentchat/contrib/test_retrievechat.py test/agentchat/contrib/test_qdrant_retrievechat.py || echo "Pytest failed. Error logs:" && cat pytest.log
         run: |
           pytest test/test_retrieve_utils.py test/agentchat/contrib/test_retrievechat.py test/agentchat/contrib/test_qdrant_retrievechat.py
       - name: Coverage

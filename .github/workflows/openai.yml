@@ -33,6 +33,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install packages and dependencies
         run: |
+          pytest test || echo "Pytest failed. Error logs:" && cat pytest.log
           docker --version
           python -m pip install --upgrade pip wheel
           pip install -e.
@@ -65,6 +66,7 @@ jobs:
           WOLFRAM_ALPHA_APPID: ${{ secrets.WOLFRAM_ALPHA_APPID }}
           OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}
         run: |
+          pytest test/agentchat/test_function_call_groupchat.py test/test_notebook.py || echo "Pytest failed. Error logs:" && cat pytest.log |
           pip install nbconvert nbformat ipykernel
           coverage run -a -m pytest test/agentchat/test_function_call_groupchat.py
           coverage run -a -m pytest test/test_notebook.py
