@@ -16,9 +16,9 @@ the number of agents, and agent conversation topology.
 
 AutoGen is powered by collaborative [research studies](/docs/Research) from Microsoft, Penn State University, and University of Washington.
 
-### Quickstart
+[![Build](https://github.com/microsoft/autogen/actions/workflows/build.yml/badge.svg)](https://github.com/microsoft/autogen/actions/workflows/build.yml)
 
-Install from pip: `pip install pyautogen`. Find more options in [Installation](/docs/Installation).
+Install from pip: `pip install pyautogen`. Find more options in [Installation](/docs/Installation).\nFor [code execution](https://github.com/microsoft/autogen/docs/FAQ#code-execution), we strongly recommend installing the python docker package, and using docker.
 For [code execution](/docs/FAQ#code-execution), we strongly recommend installing the python docker package, and using docker.
 
 #### Multi-Agent Conversation Framework
