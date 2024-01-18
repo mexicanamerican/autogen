@@ -6,10 +6,10 @@ module.exports = {
   title: 'AutoGen',
   tagline: 'Enable Next-Gen Large Language Model Applications',
   url: 'https://microsoft.github.io',
-  baseUrl: '/autogen/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/ag.ico',
+  favicon: 'path/to/favicon.ico',
   organizationName: 'Microsoft', // Usually your GitHub org/user name.
   projectName: 'AutoGen', // Usually your repo name.
   themeConfig: {
@@ -32,12 +32,20 @@ module.exports = {
             position: 'left',
             label: 'SDK',
         },
+        {to: 'doc', label: 'Docs', docId: 'Getting-Started', position: 'left'},
+        {to: 'doc', label: 'SDK', docId: 'reference/agentchat/conversable_agent', position: 'left'},
         {to: 'blog', label: 'Blog', position: 'left'},
+        {href: 'https://github.com/microsoft/autogen', label: 'GitHub', position: 'right'},
         {
           type: 'doc',
           docId: 'FAQ',
           position: 'left',
-          label: 'FAQ',
+          label: 'Discord',
+  href: 'https://discord.gg/pAbnFJrkgZ',
+},
+{
+  label: 'Twitter',
+  href: 'https://twitter.com/pyautogen',
         },
         {
           href: 'https://github.com/microsoft/autogen',
