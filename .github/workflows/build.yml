@@ -40,7 +40,7 @@ jobs:
           python -m pip install --upgrade pip wheel
           pip install -e . pytest
           python -c "import autogen"
-          pip install -e. pytest
+          pip install -e. pytest test
           pip uninstall -y openai
           pip install -e. pytest
       - name: Test with pytest
