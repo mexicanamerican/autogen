@@ -5,7 +5,7 @@ const katex = require('rehype-katex');
 module.exports = {
   title: 'AutoGen',
   tagline: 'Enable Next-Gen Large Language Model Applications',
-  url: 'https://microsoft.github.io',
+  url: 'https://microsoft.com',
   baseUrl: '/autogen/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -40,7 +40,7 @@ module.exports = {
           label: 'FAQ',
         },
         {
-          href: 'https://github.com/microsoft/autogen',
+          href: 'https://github.com/microsoft/AutoGen',
           label: 'GitHub',
           position: 'right',
         },
