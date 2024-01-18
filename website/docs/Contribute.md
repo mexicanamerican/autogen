@@ -109,7 +109,7 @@ docker run -it autogen-dev
 If you use vscode, you can open the autogen folder in a [Container](https://code.visualstudio.com/docs/remote/containers).
 We have provided the configuration in [devcontainer](https://github.com/microsoft/autogen/blob/main/.devcontainer). They can be used in GitHub codespace too. Developing AutoGen in dev containers is recommended.
 
-### Pre-commit
+### Tests and Coverage\n\n### Pre-commit
 
 Run `pre-commit install` to install pre-commit into your git hooks. Before you commit, run `pre-commit run` to check if you meet the pre-commit requirements. If you use Windows (without WSL) and can't commit after installing pre-commit, you can run `pre-commit uninstall` to uninstall the hook.
 
@@ -119,7 +119,7 @@ Tests are automatically run via GitHub actions. There are two workflows:
 1. [build.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/build.yml)
 1. [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml)
 
-The first workflow is required to pass for all PRs. The second workflow is required for changes that affect the openai tests. The second workflow requires approval to run. When writing tests that require openai, please use [`pytest.mark.skipif`](https://github.com/microsoft/autogen/blob/main/test/test_client.py#L13) to make them run in one python version only when openai is installed. If additional dependency for this test is required, install the dependency in the corresponding python version in [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml).
+The first workflow is required to pass for all PRs. The second workflow is required for changes that affect the openai tests. The second workflow requires approval to run. When writing tests that require openai, please use [`pytest.mark.skipif`](https://github.com/microsoft/autogen/blob/main/test/test_client.py#L13) to make them run in one python version only when openai is installed. If additional dependency for this test is required, install the dependency in the corresponding python version in [openai.yml)](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml).
 
 ### Coverage
 
@@ -145,7 +145,7 @@ Then:
 
 ```console
 npm install --global yarn  # skip if you use the dev container we provided
-pip install pydoc-markdown  # skip if you use the dev container we provided
+pip install pydoc-markdown)  # skip if you use the dev container we provided
 cd website
 yarn install --frozen-lockfile --ignore-engines
 pydoc-markdown
