@@ -40,7 +40,12 @@ module.exports = {
           type: 'doc',
           docId: 'FAQ',
           position: 'left',
-          label: 'FAQ',
+          label: 'Discord',
+  href: 'https://discord.gg/pAbnFJrkgZ',
+},
+{
+  label: 'Twitter',
+  href: 'https://twitter.com/pyautogen',
         },
         {
           href: 'https://github.com/microsoft/autogen',
