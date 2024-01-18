@@ -18,7 +18,11 @@ AutoGen is powered by collaborative [research studies](/docs/Research) from Micr
 
 ### Quickstart
 
-Install from pip: `pip install pyautogen`. Find more options in [Installation](/docs/Installation).
+Install from pip: `pip install autogen`. Find more options in [Installation](/docs/Installation).
+
+For code execution, we strongly recommend installing the python docker package and using docker.
+
+For code execution, we strongly recommend installing the python docker package and using docker.
 For [code execution](/docs/FAQ#code-execution), we strongly recommend installing the python docker package, and using docker.
 
 #### Multi-Agent Conversation Framework
