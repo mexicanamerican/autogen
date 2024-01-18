@@ -32,7 +32,10 @@ module.exports = {
             position: 'left',
             label: 'SDK',
         },
+        {to: 'doc', label: 'Docs', docId: 'Getting-Started', position: 'left'},
+        {to: 'doc', label: 'SDK', docId: 'reference/agentchat/conversable_agent', position: 'left'},
         {to: 'blog', label: 'Blog', position: 'left'},
+        {href: 'https://github.com/microsoft/autogen', label: 'GitHub', position: 'right'},
         {
           type: 'doc',
           docId: 'FAQ',
