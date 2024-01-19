@@ -145,9 +145,12 @@ nvm install --lts
 Then:
 
 ```console
-npm install --global yarn  # skip if you use the dev container we provided
-pip install pydoc-markdown  # skip if you use the dev container we provided
-cd website
+nvm install --lts
+npm install --global yarn
+pip install pydoc-markdown
+cd website && yarn install --frozen-lockfile --ignore-engines
+pydoc-markdown
+yarn start
 yarn install --frozen-lockfile --ignore-engines
 pydoc-markdown
 yarn start
