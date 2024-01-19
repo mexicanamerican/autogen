@@ -20,7 +20,16 @@ jobs:
         os: [ubuntu-latest]
         python-version: ["3.9", "3.10", "3.11"]
     runs-on: ${{ matrix.os }}
-    environment: openai1
+    name: OpenAI
+    on:
+      pull_request_target:
+        branches: ['main']
+        paths:
+          - 'autogen/**'
+          - 'test/**'
+          - 'notebook/agentchat_auto_feedback_from_code_execution.ipynb'
+          - 'notebook/agentchat_function_call.ipynb'
+          - '.github/workflows/openai.yml'
     steps:
       # checkout to pr branch
       - name: Checkout
@@ -74,4 +83,4 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           file: ./coverage.xml
-          flags: unittests
+          flags: pytest
