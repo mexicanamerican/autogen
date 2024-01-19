@@ -128,7 +128,7 @@ Any code you commit should not decrease coverage. To run all unit tests, install
 
 ```bash
 pip install -e."[test]"
-coverage run -m pytest test
+pytest --cov-report term-missing --cov=autogen test
 ```
 
 Then you can see the coverage report by
