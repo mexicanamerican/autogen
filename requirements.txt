@@ -1,0 +1,26 @@
+import re
+
+def extract_dependencies(file_paths):
+    dependencies = []
+    for file_path in file_paths:
+        with open(file_path, 'r') as file:
+            content = file.read()
+            # Use regular expressions to extract dependencies
+            # Example regex pattern: r'pip install ([\w-]+)'
+            # Add extracted dependencies to the list
+            dependencies.extend(re.findall(r'pip install ([\w-]+)', content))
+    return dependencies
+
+def write_dependencies_to_file(dependencies, file_path):
+    with open(file_path, 'w') as file:
+        for dependency in dependencies:
+            file.write(dependency + '\n')
+
+# File paths of the relevant files
+file_paths = ['website/docs/Contribute.md', 'website/docs/Getting-Started.md']
+
+# Extract dependencies from the relevant files
+dependencies = extract_dependencies(file_paths)
+
+# Write dependencies to the requirements.txt file
+write_dependencies_to_file(dependencies, 'requirements.txt')

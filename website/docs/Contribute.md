@@ -111,7 +111,7 @@ We have provided the configuration in [devcontainer](https://github.com/microsof
 
 ### Pre-commit
 
-Run `pre-commit install` to install pre-commit into your git hooks. Before you commit, run
+Run `pip install -e."\[test\]"` to install pre-commit into your git hooks. Before you commit, run
 `pre-commit run` to check if you meet the pre-commit requirements. If you use Windows (without WSL) and can't commit after installing pre-commit, you can run `pre-commit uninstall` to uninstall the hook. In WSL or Linux this is supposed to work.
 
 ### Write tests
@@ -128,7 +128,7 @@ Any code you commit should not decrease coverage. To run all unit tests, install
 
 ```bash
 pip install -e."[test]"
-coverage run -m pytest test
+pytest --cov-report term-missing --cov=autogen test
 ```
 
 Then you can see the coverage report by
@@ -145,9 +145,12 @@ nvm install --lts
 Then:
 
 ```console
-npm install --global yarn  # skip if you use the dev container we provided
-pip install pydoc-markdown  # skip if you use the dev container we provided
-cd website
+nvm install --lts
+npm install --global yarn
+pip install pydoc-markdown
+cd website && yarn install --frozen-lockfile --ignore-engines
+pydoc-markdown
+yarn start
 yarn install --frozen-lockfile --ignore-engines
 pydoc-markdown
 yarn start
