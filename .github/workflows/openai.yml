@@ -19,7 +19,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: ["3.9", "3.10", "3.11"]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     environment: openai1
     steps:
       # checkout to pr branch
@@ -33,6 +33,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install packages and dependencies
         run: |
+          python --version
           docker --version
           python -m pip install --upgrade pip wheel
           pip install -e.
@@ -47,6 +48,11 @@ jobs:
         run: |
           pip install -e.[mathchat]
       - name: Coverage
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_API_BASE: ${{ secrets.AZURE_OPENAI_API_BASE }}
+          OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}
         if: matrix.python-version == '3.9'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -65,6 +71,10 @@ jobs:
           WOLFRAM_ALPHA_APPID: ${{ secrets.WOLFRAM_ALPHA_APPID }}
           OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}
         run: |
+          pip install nbconvert nbformat ipykernel
+          coverage run -a -m pytest test/agentchat/test_function_call_groupchat.py
+          coverage run -a -m pytest test/test_notebook.py
+          coverage xml
           pip install nbconvert nbformat ipykernel
           coverage run -a -m pytest test/agentchat/test_function_call_groupchat.py
           coverage run -a -m pytest test/test_notebook.py
