@@ -49,9 +49,25 @@ The easiest way to start playing is
 
 ## Installation
 
-AutoGen requires **Python version >= 3.8, < 3.12**. It can be installed from pip:
+AutoGen requires **Python version >= 3.8, < 3.12**. To run the GitHub Actions workflows locally, follow the steps below:
 
+```**Step 1:** Clone the repository
 ```bash
+$ git clone https://github.com/microsoft/autogen.git
+cd autogen
+```
+
+**Step 2:** Set up the necessary environment and dependencies
+```bash
+pip install pyautogen
+pip install -r requirements.txt
+```
+
+**Step 3:** Run the workflows
+```bash
+github workflow run <workflow-name>.yml
+github workflow run --file <workflow-file-path>
+```
 pip install pyautogen
 ```
 
