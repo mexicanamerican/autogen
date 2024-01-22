@@ -5,7 +5,7 @@ const katex = require('rehype-katex');
 module.exports = {
   title: 'AutoGen',
   tagline: 'Enable Next-Gen Large Language Model Applications',
-  url: 'https://microsoft.github.io',
+  url: 'https://alexeykazakov.github.io',
   baseUrl: '/autogen/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -87,7 +87,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/microsoft/autogen/edit/main/website/',
+            'https://github.com/alexeykazakov/autogen-test/edit/main/website/',
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
@@ -113,7 +113,7 @@ module.exports = {
         // ... Your options.
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
-        blogDir:"./blog/"
+        blogDir:"./blog-test/"
         // For Docs using Chinese, The `language` is recommended to set to:
         // ```
         // language: ["en", "zh"],
