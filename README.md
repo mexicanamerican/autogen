@@ -36,14 +36,25 @@ AutoGen is a framework that enables the development of LLM applications using mu
 
 AutoGen is powered by collaborative [research studies](https://microsoft.github.io/autogen/docs/Research) from Microsoft, Penn State University, and the University of Washington.
 
-## Quickstart
+## Troubleshooting GitHub Actions
+
+When troubleshooting GitHub Actions, it is important to consider the following common issues that could cause the failure:
+- Incorrect workflow configuration
+- Missing or incorrect secrets
+- Repository permission issues
+
+**Analyzing the error logs:**
+To analyze the error logs, follow these steps:
+1. Go to the GitHub Actions tab in your repository.
+2. Select the failed workflow run to view the details.
+3. Look for any error messages or stack traces that indicate the cause of the failure.
 The easiest way to start playing is
 1. Click below to use the Github Codespace
 
     [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/microsoft/autogen?quickstart=1)
 
  2. Copy OAI_CONFIG_LIST_sample to ./notebook folder, name to OAI_CONFIG_LIST, and set the correct configuration.
- 3. Start playing with the notebooks!
+ 3. 3. Start analyzing the error logs and make the necessary changes based on the findings!
 
 
 
