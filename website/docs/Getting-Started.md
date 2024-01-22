@@ -1,6 +1,6 @@
 # Getting Started
 
-<!-- ### Welcome to AutoGen, a library for enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework! -->
+<!-- ### Welcome to AutoGen, a library for enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework and Troubleshooting GitHub Actions! -->
 
 AutoGen is a framework that enables development of LLM applications using multiple agents that can converse with each other to solve tasks. AutoGen agents are customizable, conversable, and seamlessly allow human participation. They can operate in various modes that employ combinations of LLMs, human inputs, and tools.
 
@@ -65,7 +65,9 @@ response = autogen.Completion.create(context=test_instance, **config)
 
 ### Where to Go Next ?
 
-* Understand the use cases for [multi-agent conversation](/docs/Use-Cases/agent_chat) and [enhanced LLM inference](/docs/Use-Cases/enhanced_inference).
+* Troubleshooting and Fixing GitHub Actions Failures
+
+  When troubleshooting and fixing GitHub Actions failures, follow these steps: for [multi-agent conversation](/docs/Use-Cases/agent_chat) and [enhanced LLM inference](/docs/Use-Cases/enhanced_inference).
 * Find [code examples](/docs/Examples/AgentChat).
 * Read [SDK](/docs/reference/agentchat/conversable_agent/).
 * Learn about [research](/docs/Research) around AutoGen.
