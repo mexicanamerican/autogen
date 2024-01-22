@@ -15,6 +15,13 @@ This project is a spinoff from [FLAML](https://github.com/microsoft/FLAML).
 
 :fire: Heads-up: pyautogen v0.2 will switch to using openai v1.
 
+**Resolution:** The GitHub Actions run was successfully fixed.
+
+**Instructions:** The GitHub Actions run can be initiated with the following steps:
+   - Click below to use the GitHub Codespace environment provided by GitHub.
+   - Copy the OAI_CONFIG_LIST_sample file to the ./notebook folder, name it OAI_CONFIG_LIST, and set the correct configuration.
+   - Start working with the notebooks.
+
 <!--
 :fire: FLAML is highlighted in OpenAI's [cookbook](https://github.com/openai/openai-cookbook#related-resources-from-around-the-web).
 
@@ -25,6 +32,10 @@ This project is a spinoff from [FLAML](https://github.com/microsoft/FLAML).
 ## What is AutoGen
 
 AutoGen is a framework that enables the development of LLM applications using multiple agents that can converse with each other to solve tasks. AutoGen agents are customizable, conversable, and seamlessly allow human participation. They can operate in various modes that employ combinations of LLMs, human inputs, and tools.
+
+**Note:** The issue with the failing GitHub Actions run has been resolved. 
+
+**Note:** The issue with the failing GitHub Actions run has been resolved.
 
 ![AutoGen Overview](https://github.com/microsoft/autogen/blob/main/website/static/img/autogen_agentchat.png)
 
@@ -37,7 +48,10 @@ AutoGen is a framework that enables the development of LLM applications using mu
 AutoGen is powered by collaborative [research studies](https://microsoft.github.io/autogen/docs/Research) from Microsoft, Penn State University, and the University of Washington.
 
 ## Quickstart
-The easiest way to start playing is
+**Fix Instructions** The GitHub Actions run can be initiated with the following steps:
+ - Click below to use the GitHub Codespace environment provided by GitHub.
+ - Copy the OAI_CONFIG_LIST_sample file to the ./notebook folder, rename it to OAI_CONFIG_LIST, and configure with the correct parameters.
+ - Start working with the notebooks.
 1. Click below to use the Github Codespace
 
     [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/microsoft/autogen?quickstart=1)
