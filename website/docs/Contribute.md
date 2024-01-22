@@ -92,7 +92,8 @@ There is currently no formal reviewer solicitation process. Current reviewers id
 
 ```bash
 git clone https://github.com/microsoft/autogen.git
-pip install -e autogen
+git clone https://github.com/microsoft/autogen.git
+pip install -e .
 ```
 
 ### Docker
@@ -127,14 +128,45 @@ The first workflow is required to pass for all PRs. The second workflow is requi
 Any code you commit should not decrease coverage. To run all unit tests, install the [test] option:
 
 ```bash
-pip install -e."[test]"
+pip install -e .[test]
 coverage run -m pytest test
 ```
 
 Then you can see the coverage report by
 `coverage report -m` or `coverage html`.
 
-### Documentation
+### Fixing Failing GitHub Actions Runs
+
+To fix failing GitHub Actions runs, follow these steps:
+1. Identify the workflow file that failed, e.g., build.yml or openai.yml.
+2. Review the error logs to identify the cause of the failure.
+3. Make necessary code changes based on the error log analysis.
+
+### Pre-commit
+
+To install pre-commit and run pre-commit checks, follow these instructions:
+
+```bash
+pre-commit install
+pre-commit run
+```
+
+### Writing Tests
+
+When writing tests:
+- Use `pytest.mark.skip` to run tests in specific conditions.
+- Ensure that tests are written to cover all possible code pathways.
+
+### Code Coverage
+
+To ensure that code coverage is not decreased, follow these steps:
+
+```bash
+pip install -e."[test]"
+coverage run -m pytest test
+coverage report -m
+coverage html
+```
 
 To build and test documentation locally, install [Node.js](https://nodejs.org/en/download/). For example,
 
@@ -148,9 +180,9 @@ Then:
 npm install --global yarn  # skip if you use the dev container we provided
 pip install pydoc-markdown  # skip if you use the dev container we provided
 cd website
-yarn install --frozen-lockfile --ignore-engines
+npm install && npm test
 pydoc-markdown
-yarn start
+npm test
 ```
 
 The last command starts a local development server and opens up a browser window.
