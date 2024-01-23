@@ -134,7 +134,8 @@ coverage run -m pytest test
 ```
 
 Then you can see the coverage report by
-`coverage report -m` or `coverage html`.
+`coverage report -m
+coverage html` or `coverage html`.
 
 ### Documentation
 
