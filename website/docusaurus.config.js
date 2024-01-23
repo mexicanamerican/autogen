@@ -40,6 +40,11 @@ module.exports = {
           label: 'FAQ',
         },
         {
+          href: 'https://github.com/autogen/autogen',
+          label: 'GitHub',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/microsoft/autogen',
           label: 'GitHub',
           position: 'right',
