@@ -128,7 +128,7 @@ Any code you commit should not decrease coverage. To run all unit tests, install
 
 ```bash
 pip install -e."[test]"
-coverage run -m pytest test
+coverage run -m pytest testss
 ```
 
 Then you can see the coverage report by
