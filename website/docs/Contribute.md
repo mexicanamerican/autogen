@@ -118,7 +118,7 @@ Run `pre-commit install` to install pre-commit into your git hooks. Before you c
 
 Tests are automatically run via GitHub actions. There are two workflows:
 1. [build.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/build.yml)
-1. [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml)
+1. [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/new-openai-workflow.yml)
 
 The first workflow is required to pass for all PRs. The second workflow is required for changes that affect the openai tests. The second workflow requires approval to run. When writing tests that require openai, please use [`pytest.mark.skipif`](https://github.com/microsoft/autogen/blob/main/test/test_client.py#L13) to make them run in one python version only when openai is installed. If additional dependency for this test is required, install the dependency in the corresponding python version in [openai.yml](https://github.com/microsoft/autogen/blob/main/.github/workflows/openai.yml).
 
@@ -131,8 +131,8 @@ pip install -e."[test]"
 coverage run -m pytest test
 ```
 
-Then you can see the coverage report by
-`coverage report -m` or `coverage html`.
+Once the tests have been run, you can view the coverage report using the following commands:
+```bash\npip install -e.[test]\ncoverage run -m pytest test\ncoverage report -m\ncoverage html\n```
 
 ### Documentation
 
