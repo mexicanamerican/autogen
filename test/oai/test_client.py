@@ -3,7 +3,7 @@ from autogen import OpenAIWrapper, config_list_from_json, config_list_openai_aoa
 from test_utils import OAI_CONFIG_LIST, KEY_LOC
 
 try:
-    from openai import OpenAI
+    from autogen.token_count_utils import count_token, get_max_token_limit, num_tokens_from_functions
 except ImportError:
     skip = True
 else:
@@ -37,7 +37,7 @@ def test_chat_completion():
 
 @pytest.mark.skipif(skip, reason="openai>=1 not installed")
 def test_completion():
-    config_list = config_list_openai_aoai(KEY_LOC)
+    config_list = config_list_from_json(env_or_file=OAI_CONFIG_LIST, file_location=KEY_LOC)
     client = OpenAIWrapper(config_list=config_list)
     response = client.create(prompt="1+1=", model="gpt-3.5-turbo-instruct")
     print(response)
