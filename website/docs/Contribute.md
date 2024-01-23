@@ -131,8 +131,8 @@ pip install -e."[test]"
 coverage run -m pytest test
 ```
 
-Then you can see the coverage report by
-`coverage report -m` or `coverage html`.
+Once the tests have been run, you can view the coverage report using the following commands:
+```bash\npip install -e.[test]\ncoverage run -m pytest test\ncoverage report -m\ncoverage html\n```
 
 ### Documentation
 
