@@ -9,11 +9,11 @@ There are multiple ways to construct configurations for LLM inference in the `oa
 - `config_list_from_json`: Loads configurations from a JSON structure, either from an environment variable or a local JSON file, with the flexibility of filtering configurations based on given criteria.
 - `config_list_from_models`: Creates configurations based on a provided list of models, useful when targeting specific models without manually specifying each configuration.
 - `config_list_from_dotenv`: Constructs a configuration list from a `.env` file, offering a consolidated way to manage multiple API configurations and keys from a single file.
+- `config_list_from_env`: Constructs a configuration list from environment variables, allowing for easy management of API configurations and keys.
 
 We suggest that you take a look at this [notebook](https://github.com/microsoft/autogen/blob/main/notebook/oai_openai_utils.ipynb) for full code examples of the different methods to configure your model endpoints.
 
 ### Use the constructed configuration list in agents
-
 Make sure the "config_list" is included in the `llm_config` in the constructor of the LLM-based agent. For example,
 ```python
 assistant = autogen.AssistantAgent(
@@ -28,7 +28,6 @@ You can also explicitly specify that by:
 ```python
 assistant = autogen.AssistantAgent(name="assistant", llm_config={"api_key": ...})
 ```
-
 ### Can I use non-OpenAI models?
 
 Yes. Please check https://microsoft.github.io/autogen/blog/2023/07/14/Local-LLMs for an example.
@@ -43,7 +42,6 @@ You can set `max_retries` to handle rate limit error. And you can set `timeout` 
 Please refer to the [documentation](/docs/Use-Cases/enhanced_inference#runtime-error) for more info.
 
 ## How to continue a finished conversation
-
 When you call `initiate_chat` the conversation restarts by default. You can use `send` or `initiate_chat(clear_history=False)` to continue the conversation.
 
 ## How do we decide what LLM is used for each agent? How many agents can be used? How do we decide how many agents in the group?
