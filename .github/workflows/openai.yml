@@ -7,7 +7,7 @@ on:
   pull_request_target:
     branches: ['main']
     paths:
-      - 'autogen/**'
+      - .github/workflows/openai.yml
       - 'test/**'
       - 'notebook/agentchat_auto_feedback_from_code_execution.ipynb'
       - 'notebook/agentchat_function_call.ipynb'
