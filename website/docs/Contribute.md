@@ -128,11 +128,14 @@ Any code you commit should not decrease coverage. To run all unit tests, install
 
 ```bash
 pip install -e."[test]"
+pip install -e."[test]"
+pip install -e."[test]"
 coverage run -m pytest test
 ```
 
 Then you can see the coverage report by
-`coverage report -m` or `coverage html`.
+`coverage report -m
+coverage html` or `coverage html`.
 
 ### Documentation
 
