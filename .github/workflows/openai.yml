@@ -33,10 +33,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install packages and dependencies
         run: |
-          docker --version
+          # Removed unnecessary command: docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e.
-          python -c "import autogen"
+          pip install -e autogen
+          python -c "import autogen; import coverage; import pytest_asyncio"
           pip install coverage pytest-asyncio
       - name: Install packages for test when needed
         if: matrix.python-version == '3.9'
