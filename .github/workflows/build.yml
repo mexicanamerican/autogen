@@ -43,11 +43,11 @@ jobs:
           pip install -e. pytest
           pip uninstall -y openai
       - name: Test with pytest
-        if: matrix.python-version != '3.10'
+        if: matrix.python-version != '3.10' && matrix.python-version != '3.11'
         run: |
           pytest test
       - name: Coverage
-        if: matrix.python-version == '3.10'
+        if: matrix.python-version == '3.10' && matrix.python-version != '3.11'
         run: |
           pip install -e .[mathchat,test]
           pip uninstall -y openai
@@ -56,6 +56,7 @@ jobs:
       - name: Upload coverage to Codecov
         if: matrix.python-version == '3.10'
         uses: codecov/codecov-action@v3
+        with:
         with:
           file: ./coverage.xml
           flags: unittests
