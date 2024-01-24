@@ -32,6 +32,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install packages and dependencies
         run: |
+          coverage run -a -m pytest test/agentchat/contrib/test_retrievechat.py test/agentchat/contrib/test_qdrant_retrievechat.py
+          coverage xml
+      
           docker --version
           python -m pip install --upgrade pip wheel
           pip install -e .
@@ -49,6 +52,9 @@ jobs:
           AZURE_OPENAI_API_BASE: ${{ secrets.AZURE_OPENAI_API_BASE }}
           OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}
         run: |
+          coverage run -a -m pytest test/agentchat/contrib/test_retrievechat.py test/agentchat/contrib/test_qdrant_retrievechat.py
+          coverage xml
+      
           coverage run -a -m pytest test/agentchat/contrib/test_retrievechat.py test/agentchat/contrib/test_qdrant_retrievechat.py
           coverage xml
       - name: Upload coverage to Codecov

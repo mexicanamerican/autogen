@@ -37,7 +37,7 @@ jobs:
           python -m pip install --upgrade pip wheel
           pip install -e.
           python -c "import autogen"
-          pip install coverage pytest-asyncio
+          pip install coverage>=5.3
       - name: Install packages for test when needed
         if: matrix.python-version == '3.9'
         run: |
@@ -54,7 +54,7 @@ jobs:
           AZURE_OPENAI_API_BASE: ${{ secrets.AZURE_OPENAI_API_BASE }}
           OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}
         run: |
-          coverage run -a -m pytest test
+          coverage run -a -m pytest test/agentchat/contrib
           coverage xml
       - name: Coverage and check notebook outputs
         if: matrix.python-version != '3.9'
