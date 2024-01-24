@@ -1,7 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
-name: Build
+name: Build and Test
 
 on:
   push:
@@ -13,12 +10,9 @@ on:
       - 'setup.py'
   pull_request:
     branches: ['main']
-  merge_group:
-    types: [checks_requested]
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref }}
-  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+env:
+  MY_SECRET: ${{ secrets.MY_SECRET }}
 
 jobs:
   build:
@@ -44,6 +38,8 @@ jobs:
           pip uninstall -y openai
       - name: Test with pytest
         if: matrix.python-version != '3.10'
+          run: |
+            pytest test
         run: |
           pytest test
       - name: Coverage
