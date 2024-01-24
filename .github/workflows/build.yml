@@ -40,7 +40,7 @@ jobs:
           python -m pip install --upgrade pip wheel
           pip install -e .
           python -c "import autogen"
-          pip install -e. pytest
+          pip install pytest
           pip uninstall -y openai
       - name: Test with pytest
         if: matrix.python-version != '3.10'
@@ -51,7 +51,7 @@ jobs:
         run: |
           pip install -e .[mathchat,test]
           pip uninstall -y openai
-          coverage run -a -m pytest test
+          pytest
           coverage xml
       - name: Upload coverage to Codecov
         if: matrix.python-version == '3.10'
