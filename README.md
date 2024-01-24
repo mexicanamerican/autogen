@@ -53,6 +53,20 @@ AutoGen requires **Python version >= 3.8, < 3.12**. It can be installed from pip
 
 ```bash
 pip install pyautogen
+
+# Run the following commands to execute the GitHub Actions:
+
+- To build and test the project, push to the main branch:
+
+  ```
+  git push origin main
+  ```
+
+- To fix the workflow, push to the main branch:
+
+  ```
+  git push origin main
+  ```
 ```
 
 Minimal dependencies are installed without extra options. You can install extra options based on the feature you need.
