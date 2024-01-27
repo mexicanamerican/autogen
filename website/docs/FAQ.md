@@ -5,7 +5,6 @@
 There are multiple ways to construct configurations for LLM inference in the `oai` utilities:
 
 - `get_config_list`: Generates configurations for API calls, primarily from provided API keys.
-- `config_list_openai_aoai`: Constructs a list of configurations using both Azure OpenAI and OpenAI endpoints, sourcing API keys from environment variables or local files.
 - `config_list_from_json`: Loads configurations from a JSON structure, either from an environment variable or a local JSON file, with the flexibility of filtering configurations based on given criteria.
 - `config_list_from_models`: Creates configurations based on a provided list of models, useful when targeting specific models without manually specifying each configuration.
 - `config_list_from_dotenv`: Constructs a configuration list from a `.env` file, offering a consolidated way to manage multiple API configurations and keys from a single file.
@@ -34,6 +33,7 @@ assistant = autogen.AssistantAgent(name="assistant", llm_config={"api_key": ...}
 Yes. Please check https://microsoft.github.io/autogen/blog/2023/07/14/Local-LLMs for an example.
 
 ## Handle Rate Limit Error and Timeout Error
++ Find more options in [Installation](https://microsoft.github.io/autogen/docs/Installation).
 
 You can set `max_retries` to handle rate limit error. And you can set `timeout` to handle timeout error. They can all be specified in `llm_config` for an agent, which will be used in the OpenAI client for LLM inference. They can be set differently for different clients if they are set in the `config_list`.
 
