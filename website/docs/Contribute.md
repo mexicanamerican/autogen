@@ -114,6 +114,14 @@ We have provided the configuration in [devcontainer](https://github.com/microsof
 Run `pre-commit install` to install pre-commit into your git hooks. Before you commit, run
 `pre-commit run` to check if you meet the pre-commit requirements. If you use Windows (without WSL) and can't commit after installing pre-commit, you can run `pre-commit uninstall` to uninstall the hook. In WSL or Linux this is supposed to work.
 
+### Writing Tests and Ensuring Test Coverage
+
+To contribute to the autogen project, it is important to write tests and ensure that test coverage does not decrease. Follow these guidelines:
+
+1. Write comprehensive tests for new features or bug fixes.
+2. Run the tests locally using the provided test runner.
+3. Ensure that the test coverage does not decrease by running the coverage report.
+4. If necessary, update the tests to cover any new code changes.
 ### Write tests
 
 Tests are automatically run via GitHub actions. There are two workflows:
