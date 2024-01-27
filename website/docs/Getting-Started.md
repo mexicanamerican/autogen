@@ -18,6 +18,12 @@ AutoGen is powered by collaborative [research studies](/docs/Research) from Micr
 
 ### Quickstart
 
+**Troubleshooting GitHub Actions Runs**
+
+If your GitHub Actions run fails, follow these troubleshooting steps:
+1. Check the error logs to understand the cause of the failure.
+2. Look for common issues such as dependency installation failures, incorrect environment setup, or network connectivity problems.
+
 Install from pip: `pip install pyautogen`. Find more options in [Installation](/docs/Installation).
 For [code execution](/docs/FAQ#code-execution), we strongly recommend installing the python docker package, and using docker.
 

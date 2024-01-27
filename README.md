@@ -15,6 +15,12 @@ This project is a spinoff from [FLAML](https://github.com/microsoft/FLAML).
 
 :fire: Heads-up: pyautogen v0.2 will switch to using openai v1.
 
+### Troubleshooting
+
+If your GitHub Actions run fails, follow these troubleshooting steps:
+1. Check the error logs to understand the cause of the failure.
+2. Look for common issues such as dependency installation failures, incorrect environment setup, or network connectivity problems.
+
 <!--
 :fire: FLAML is highlighted in OpenAI's [cookbook](https://github.com/openai/openai-cookbook#related-resources-from-around-the-web).
 
@@ -217,5 +223,5 @@ Microsoft's general trademark guidelines can be found at http://go.microsoft.com
 
 Privacy information can be found at https://privacy.microsoft.com/en-us/
 
-Microsoft and any contributors reserve all other rights, whether under their respective copyrights, patents,
+Microsoft and any contributors reserve all other rights, whether under their respective copyrights, patents, or trademarks, whether by implication, estoppel, or otherwise.
 or trademarks, whether by implication, estoppel, or otherwise.
