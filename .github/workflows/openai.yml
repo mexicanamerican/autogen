@@ -5,10 +5,12 @@ name: OpenAI
 
 on:
   pull_request_target:
+    types: [opened, synchronize, reopened]
     branches: ['main']
     paths:
       - 'autogen/**'
       - 'test/**'
+      - 'autogen/**'
       - 'notebook/agentchat_auto_feedback_from_code_execution.ipynb'
       - 'notebook/agentchat_function_call.ipynb'
       - '.github/workflows/openai.yml'
@@ -17,25 +19,30 @@ jobs:
   test:
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        python-version: ["3.9", "3.10", "3.11"]
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        python-version: ["3.9"]
     runs-on: ${{ matrix.os }}
-    environment: openai1
+    environment: production
     steps:
       # checkout to pr branch
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ required.python-version }}
       - name: Install packages and dependencies
         run: |
           docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e.
+          pip install -e. 
+pip install dependency1 dependency2 dependency3
+          pip install dependency1 dependency2 dependency3
           python -c "import autogen"
           pip install coverage pytest-asyncio
       - name: Install packages for test when needed
@@ -43,13 +50,13 @@ jobs:
         run: |
           pip install docker
       - name: Install dependencies for test when needed
-        if: matrix.python-version == '3.10'  # test_agentchat_function_call
+        if: matrix.python-version == '3.9'  # test_agentchat_function_call
         run: |
           pip install -e.[mathchat]
       - name: Coverage
         if: matrix.python-version == '3.9'
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NEW_ENV_VARIABLE: ${{ secrets.NEW_ENV_VARIABLE }}
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_API_BASE: ${{ secrets.AZURE_OPENAI_API_BASE }}
           OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}
