@@ -1,6 +1,6 @@
 # Multi-agent Conversation Framework
 
-AutoGen offers a unified multi-agent conversation framework as a high-level abstraction of using foundation models. It features capable, customizable and conversable agents which integrate LLM, tool and human via automated agent chat.
+AutoGen offers a unified multi-agent conversation framework framework as a high-level abstraction of using foundation models. It features capable, customizable and conversable agents which integrate LLM, tool and human via automated agent chat.
 By automating chat among multiple capable agents, one can easily make them collectively perform tasks autonomously or with human feedback, including tasks that require using tools via code.
 
 This framework simplifies the orchestration, automation and optimization of a complex LLM workflow. It maximizes the performance of LLM models and overcome their weaknesses. It enables building next-gen LLM applications based on multi-agent conversations with minimal effort.
@@ -13,7 +13,7 @@ designed to solve tasks through inter-agent conversations. Specifically, the age
 - Conversable: Agents in AutoGen are conversable, which means that any agent can send
   and receive messages from other agents to initiate or continue a conversation
 
-- Customizable: Agents in AutoGen can be customized to integrate LLMs, humans, tools, or a combination of them.
+- Customizable: Agents in AutoGen can be customized to integrate LLMs, humans, tools, or a combination of them. The behavior of agents can be further extended and customized by adding new reply functions with the register_reply() method.
 
 The figure below shows the built-in agents in AutoGen.
 ![Agent Chat Example](images/autogen_agents.png)
@@ -61,7 +61,7 @@ After the initialization step, the conversation could proceed automatically. Fin
 3. Once the user_proxy receives a response from the assistant, it tries to reply by either soliciting human input or preparing an automatically generated reply. If no human input is provided, the user_proxy executes the code and uses the result as the auto-reply.
 4. The assistant then generates a further response for the user_proxy. The user_proxy can then decide whether to terminate the conversation. If not, steps 3 and 4 are repeated.
 
-### Supporting Diverse Conversation Patterns
+Example: Dynamic Conversation with LLM-based Function Call
 
 #### Conversations with different levels of autonomy, and human-involvement patterns
 

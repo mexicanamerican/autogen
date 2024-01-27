@@ -49,32 +49,7 @@ module.exports = {
     footer: {
       style: 'dark',
       links: [
-        // {
-        //   title: 'Docs',
-        //   items: [
-        //     {
-        //       label: 'Getting Started',
-        //       to: 'docs/getting-started',
-        //     },
-        //   ],
-        // },
-        {
-          title: 'Community',
-          items: [
-        //     // {
-        //     //   label: 'Stack Overflow',
-        //     //   href: 'https://stackoverflow.com/questions/tagged/pymarlin',
-        //     // },
-            {
-              label: 'Discord',
-              href: 'https://discord.gg/pAbnFJrkgZ',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/pyautogen',
-            },
-          ],
-        },
+        blogDir:"./docs/blog/",
       ],
       copyright: `Copyright © ${new Date().getFullYear()} AutoGen Authors.`,
     },
