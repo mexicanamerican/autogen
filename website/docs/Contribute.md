@@ -103,7 +103,6 @@ We provide a simple [Dockerfile](https://github.com/microsoft/autogen/blob/main/
 docker build https://github.com/microsoft/autogen.git#main -t autogen-dev
 docker run -it autogen-dev
 ```
-
 ### Develop in Remote Container
 
 If you use vscode, you can open the autogen folder in a [Container](https://code.visualstudio.com/docs/remote/containers).
