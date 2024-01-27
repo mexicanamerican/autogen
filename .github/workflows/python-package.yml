@@ -29,7 +29,7 @@ jobs:
       #   with:
       #     auto-update-conda: true
       #     auto-activate-base: false
-      #     activate-environment: hcrystalball
+      activate-environment: clean_env
       #     python-version: ${{ matrix.python-version }}
       #     use-only-tar-bz2: true
       - name: Install from source
