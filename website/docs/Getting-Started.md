@@ -18,19 +18,19 @@ AutoGen is powered by collaborative [research studies](/docs/Research) from Micr
 
 ### Quickstart
 
-Install from pip: `pip install pyautogen`. Find more options in [Installation](/docs/Installation).
-For [code execution](/docs/FAQ#code-execution), we strongly recommend installing the python docker package, and using docker.
+Install from pip: `pip install autogen`. Find more options in [Installation](/docs/Installation).
+For [code execution](/docs/FAQ#code-execution),
 
 #### Multi-Agent Conversation Framework
 Autogen enables the next-gen LLM applications with a generic multi-agent conversation framework. It offers customizable and conversable agents which integrate LLMs, tools and human.
-By automating chat among multiple capable agents, one can easily make them collectively perform tasks autonomously or with human feedback, including tasks that require using tools via code. For [example](https://github.com/microsoft/autogen/blob/main/test/twoagent.py),
+By automating chat among multiple capable agents, one can easily make them collectively perform tasks autonomously or with human feedback. For [example](https://github.com/microsoft/autogen/blob/main/test/twoagent.py)
 ```python
 from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
 
 # Load LLM inference endpoints from an env variable or a file
 # See https://microsoft.github.io/autogen/docs/FAQ#set-your-api-endpoints
 # and OAI_CONFIG_LIST_sample.json
-config_list = config_list_from_json(env_or_file="OAI_CONFIG_LIST")
+config_list = config_list_from_json()
 assistant = AssistantAgent("assistant", llm_config={"config_list": config_list})
 user_proxy = UserProxyAgent("user_proxy", code_execution_config={"work_dir": "coding"})
 user_proxy.initiate_chat(assistant, message="Plot a chart of NVDA and TESLA stock price change YTD.")
@@ -47,7 +47,7 @@ The figure below shows an example conversation flow with AutoGen.
 Autogen also helps maximize the utility out of the expensive LLMs such as ChatGPT and GPT-4. It offers enhanced LLM inference with powerful functionalites like tuning, caching, error handling, templating. For example, you can optimize generations by LLM with your own tuning data, success metrics and budgets.
 ```python
 # perform tuning for openai<1
-config, analysis = autogen.Completion.tune(
+config = autogen.Completion.tune(
     data=tune_data,
     metric="success",
     mode="max",
