@@ -5,7 +5,7 @@
 name: python-package
 
 on:
-  release:
+  pull_request_target:
     types: [published]
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         os: ['ubuntu-latest']
-        python-version: [3.10]
+        python-version: ['3.9', '3.10', '3.11']
     runs-on: ${{ matrix.os }}
     environment: package
     steps:
@@ -47,6 +47,6 @@ jobs:
       - name: Publish to PyPI
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
         shell: pwsh
         run: twine upload dist/*
