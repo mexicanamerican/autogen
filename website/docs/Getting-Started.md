@@ -25,7 +25,7 @@ For [code execution](/docs/FAQ#code-execution),
 Autogen enables the next-gen LLM applications with a generic multi-agent conversation framework. It offers customizable and conversable agents which integrate LLMs, tools and human.
 By automating chat among multiple capable agents, one can easily make them collectively perform tasks autonomously or with human feedback. For [example](https://github.com/microsoft/autogen/blob/main/test/twoagent.py)
 ```python
-from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
+from pyautogen import AssistantAgent, UserProxyAgent, config_list_from_json
 
 # Load LLM inference endpoints from an env variable or a file
 # See https://microsoft.github.io/autogen/docs/FAQ#set-your-api-endpoints
