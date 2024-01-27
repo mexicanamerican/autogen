@@ -49,6 +49,38 @@ The easiest way to start playing is
 
 ## Installation
 
+## Troubleshooting
+
+Follow the steps below to analyze the error logs and resolve common issues related to the GitHub Actions.
+
+### Analyzing Error Logs
+
+You can analyze the error logs by following these steps:
+1. Navigate to the folder where the error logs are located.
+2. Open the error logs file to review the errors and stack traces.
+
+### Common Issues and Solutions
+
+#### 1. Invalid GitHub Actions Configuration
+
+If the error is related to an invalid GitHub Actions configuration, ensure that the workflow file (.yml) is correctly configured. Check for syntax errors, incorrect indentation, or missing required fields.
+
+#### 2. Permissions Issue
+
+If the error is related to permissions, ensure that the necessary permissions are set for the workflow to run. This includes repository permissions and any required secrets or environment variables.
+
+#### 3. Missing Dependencies
+
+If the error is related to missing dependencies, verify that the required dependencies are installed or available in the environment.
+
+#### 4. Network Connectivity
+
+If there are issues with network connectivity, ensure that the environment has access to the required resources and that the network configuration is correct.
+
+#### 5. Container Environment
+
+If the workflow runs in a container environment, verify that the container image and configuration are correct.
+
 AutoGen requires **Python version >= 3.8, < 3.12**. It can be installed from pip:
 
 ```bash

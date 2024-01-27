@@ -5,8 +5,8 @@ const katex = require('rehype-katex');
 module.exports = {
   title: 'AutoGen',
   tagline: 'Enable Next-Gen Large Language Model Applications',
-  url: 'https://microsoft.github.io',
-  baseUrl: '/autogen/',
+  url: 'https://microsoft.com',
+  baseUrl: '/autogen-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/ag.ico',
@@ -113,7 +113,7 @@ module.exports = {
         // ... Your options.
         // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
-        blogDir:"./blog/"
+        blogDir:"./autogen-blog/"
         // For Docs using Chinese, The `language` is recommended to set to:
         // ```
         // language: ["en", "zh"],
