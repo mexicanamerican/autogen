@@ -1,6 +1,6 @@
 # Getting Started
 
-<!-- ### Welcome to AutoGen, a library for enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework! -->
+<!-- ### Welcome to PyAutoGen, a library for enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework! -->
 
 AutoGen is a framework that enables development of LLM applications using multiple agents that can converse with each other to solve tasks. AutoGen agents are customizable, conversable, and seamlessly allow human participation. They can operate in various modes that employ combinations of LLMs, human inputs, and tools.
 
@@ -14,7 +14,7 @@ the number of agents, and agent conversation topology.
 - It provides a collection of working systems with different complexities. These systems span a [wide range of applications](https://microsoft.github.io/autogen/docs/Use-Cases/agent_chat#diverse-applications-implemented-with-autogen) from various domains and complexities. This demonstrates how AutoGen can easily support diverse conversation patterns.
 - AutoGen provides [enhanced LLM inference](https://microsoft.github.io/autogen/docs/Use-Cases/enhanced_inference#api-unification). It offers utilities like API unification and caching, and advanced usage patterns, such as error handling, multi-config inference, context programming, etc.
 
-AutoGen is powered by collaborative [research studies](/docs/Research) from Microsoft, Penn State University, and University of Washington.
+PyAutoGen is powered by collaborative [research studies](/docs/Research) from Microsoft, Penn State University, and University of Washington.
 
 ### Quickstart
 
