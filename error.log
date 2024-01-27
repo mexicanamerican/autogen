@@ -1,0 +1,4 @@
+# Function to write error logs to error.log file
+def write_error_logs(error_logs):
+    with open("error.log", "w") as file:
+        file.write(error_logs)
