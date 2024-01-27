@@ -52,7 +52,7 @@ jobs:
           npm i --legacy-peer-deps
           npm run build
           fi
-  gh-release:
+  deploy:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     defaults:

@@ -5,14 +5,14 @@ name: Build
 
 on:
   push:
-    branches: ['main']
+    branches: ['main', 'master']
     paths:
       - 'autogen/**'
       - 'test/**'
       - '.github/workflows/build.yml'
       - 'setup.py'
   pull_request:
-    branches: ['main']
+    branches: ['main', 'master']
   merge_group:
     types: [checks_requested]
 
@@ -40,7 +40,7 @@ jobs:
           python -m pip install --upgrade pip wheel
           pip install -e .
           python -c "import autogen"
-          pip install -e. pytest
+          pip install pytest
           pip uninstall -y openai
       - name: Test with pytest
         if: matrix.python-version != '3.10'
@@ -50,7 +50,7 @@ jobs:
         if: matrix.python-version == '3.10'
         run: |
           pip install -e .[mathchat,test]
-          pip uninstall -y openai
+          pip uninstall -y openai-python
           coverage run -a -m pytest test
           coverage xml
       - name: Upload coverage to Codecov
