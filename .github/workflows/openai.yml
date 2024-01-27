@@ -22,7 +22,7 @@ jobs:
         os: [ubuntu-latest]
         python-version: ["3.8", "3.9", "3.10", "3.11"]
     runs-on: ${{ matrix.os }}
-    environment: openai1
+    environment: production
     steps:
       # checkout to pr branch
       - name: Checkout
@@ -52,7 +52,7 @@ jobs:
       - name: Coverage
         if: matrix.python-version == '3.9'
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NEW_ENV_VARIABLE: ${{ secrets.NEW_ENV_VARIABLE }}
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_API_BASE: ${{ secrets.AZURE_OPENAI_API_BASE }}
           OAI_CONFIG_LIST: ${{ secrets.OAI_CONFIG_LIST }}
