@@ -8,6 +8,8 @@ on:
     branches: ['main']
     paths:
       - 'autogen/**'
+      - '!autogen/**/*autogen.py'
+      - '!autogen/**/*autogen.py'
       - 'test/**'
       - 'notebook/agentchat_auto_feedback_from_code_execution.ipynb'
       - 'notebook/agentchat_function_call.ipynb'
