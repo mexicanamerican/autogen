@@ -17,9 +17,9 @@ the rights to use your contribution. For details, visit <https://cla.opensource.
 
 If you are new to GitHub [here](https://help.github.com/categories/collaborating-with-issues-and-pull-requests/) is a detailed help source on getting involved with development on GitHub.
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
+Before submitting a pull request, ensure that the GitHub Actions and all checks pass. The CLA bot will automatically determine whether you need to provide
 a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+provided by the bot. Additionally, emphasize the importance of running tests and ensuring all checks pass before submitting the pull request. You will only need to do this once across all repos using our CLA.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
@@ -67,7 +67,7 @@ There is currently no formal reviewer solicitation process. Current reviewers id
 * For new PR, decide whether to close without review. If not, find the right reviewers. The default reviewer is microsoft/autogen. Ask users who can benefit from the PR to review it.
 *	For old PR, check the blocker: reviewer or PR creator. Try to unblock. Get additional help when needed.
 *	When requesting changes, make sure you can check back in time because it blocks merging.
-*	Make sure all the checks are passed.
+*	Ensure that the GitHub Actions and all checks pass before merging the PR.
 *	For changes that require running OpenAI tests, make sure the OpenAI tests pass too. Running these tests requires approval.
 *	In general, suggest small PRs instead of a giant PR.
 *	For documentation change, request snapshot of the compiled website, or compile by yourself to verify the format.
@@ -124,7 +124,7 @@ The first workflow is required to pass for all PRs. The second workflow is requi
 
 ### Coverage
 
-Any code you commit should not decrease coverage. To run all unit tests, install the [test] option:
+Before submitting the pull request, ensure that all checks and tests pass, including maintaining test coverage. To run all unit tests and ensure coverage, install the [test] option:
 
 ```bash
 pip install -e."[test]"
