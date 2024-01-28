@@ -43,7 +43,7 @@ The figure below shows an example conversation flow with AutoGen.
 * [Code examples](/docs/Examples/AgentChat).
 * [Documentation](/docs/Use-Cases/agent_chat).
 
-#### Enhanced LLM Inferences
+#### Troubleshooting and Ensuring Checks Pass
 Autogen also helps maximize the utility out of the expensive LLMs such as ChatGPT and GPT-4. It offers enhanced LLM inference with powerful functionalites like tuning, caching, error handling, templating. For example, you can optimize generations by LLM with your own tuning data, success metrics and budgets.
 ```python
 # perform tuning for openai<1
@@ -62,6 +62,18 @@ response = autogen.Completion.create(context=test_instance, **config)
 
 * [Code examples](/docs/Examples/Inference).
 * [Documentation](/docs/Use-Cases/enhanced_inference).
+
+### How to Troubleshoot and Ensure Checks Pass
+
+- To troubleshoot and debug failing GitHub Actions, follow these steps:
+  - Check the error logs and identify the specific actions that are failing.
+  - Review the action configuration and ensure that it is correctly set up.
+  - Look for common issues such as authentication errors, incorrect environment setup, or syntax errors.
+
+- Before proceeding with development, ensure that all checks and tests pass:
+  - Run tests locally to identify any potential issues early in the development process.
+  - Review the GitHub Actions workflow configuration to ensure that it includes the necessary checks and tests.
+  - Monitor the GitHub Actions runs to verify that all checks pass successfully.
 
 ### Where to Go Next ?
 
