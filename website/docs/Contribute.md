@@ -10,6 +10,13 @@ This project welcomes and encourages all forms of contributions, including but n
 -  Tutorials, blog posts, talks that promote the project.
 -  Sharing application scenarios and/or related research.
 
+-  Submitting pull requests. Follow the instructions below to submit a pull request:
+
+    1. Fork the repository.
+    2. Create a new branch for your changes.
+    3. Make your changes and commit them to your branch.
+    4. Push your branch to your forked repository.
+    5. Open a pull request from your branch to the main repository.
 
 Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us

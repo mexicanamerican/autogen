@@ -3,8 +3,8 @@
 
 name: OpenAI
 
-on:
-  pull_request_target:
+    pull_request:
+      branches: ['main']
     branches: ['main']
     paths:
       - 'autogen/**'
@@ -35,7 +35,7 @@ jobs:
         run: |
           docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e.
+          pip install -e .
           python -c "import autogen"
           pip install coverage pytest-asyncio
       - name: Install packages for test when needed
@@ -57,7 +57,7 @@ jobs:
           coverage run -a -m pytest test
           coverage xml
       - name: Coverage and check notebook outputs
-        if: matrix.python-version != '3.9'
+        if: matrix.python-version != '3.9' && github.repository != 'refs/heads/main'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}

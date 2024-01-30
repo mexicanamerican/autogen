@@ -1,6 +1,6 @@
 # Multi-agent Conversation Framework
 
-AutoGen offers a unified multi-agent conversation framework as a high-level abstraction of using foundation models. It features capable, customizable and conversable agents which integrate LLM, tool and human via automated agent chat.
+AutoGen offers a unified multi-agent conversation framework as a high-level abstraction of using foundation models to facilitate conversation among multiple agents. It features capable, customizable, and conversable agents that integrate LLMs, tools, and human interaction via automated agent chat.
 By automating chat among multiple capable agents, one can easily make them collectively perform tasks autonomously or with human feedback, including tasks that require using tools via code.
 
 This framework simplifies the orchestration, automation and optimization of a complex LLM workflow. It maximizes the performance of LLM models and overcome their weaknesses. It enables building next-gen LLM applications based on multi-agent conversations with minimal effort.
@@ -15,7 +15,7 @@ designed to solve tasks through inter-agent conversations. Specifically, the age
 
 - Customizable: Agents in AutoGen can be customized to integrate LLMs, humans, tools, or a combination of them.
 
-The figure below shows the built-in agents in AutoGen.
+The figure below shows the built-in agents in AutoGen:
 ![Agent Chat Example](images/autogen_agents.png)
 
 We have designed a generic `ConversableAgent` class for Agents that are capable of conversing with each other through the exchange of messages to jointly finish a task. An agent can communicate with other agents and perform actions. Different agents can differ in what actions they perform after receiving messages. Two representative subclasses are `AssistantAgent` and `UserProxyAgent`.
@@ -30,7 +30,14 @@ One can also easily extend it by registering reply functions with the `register_
 In the following code, we create an `AssistantAgent` named "assistant" to serve as the assistant and a `UserProxyAgent` named "user_proxy" to serve as a proxy for the human user. We will later employ these two agents to solve a task.
 
 ```python
+# import the AssistantAgent and UserProxyAgent classes
 from autogen import AssistantAgent, UserProxyAgent
+
+# create an AssistantAgent instance named "assistant"
+assistant = AssistantAgent(name="assistant")
+
+# create a UserProxyAgent instance named "user_proxy"
+user_proxy = UserProxyAgent(name="user_proxy")
 
 # create an AssistantAgent instance named "assistant"
 assistant = AssistantAgent(name="assistant")
