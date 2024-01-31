@@ -40,16 +40,16 @@ jobs:
           python -m pip install --upgrade pip wheel
           pip install -e .
           python -c "import autogen"
-          pip install -e. pytest
+          pip install -e pytest
           pip uninstall -y openai
-      - name: Test with pytest
+      - name: Run tests
         if: matrix.python-version != '3.10'
         run: |
           pytest test
       - name: Coverage
         if: matrix.python-version == '3.10'
         run: |
-          pip install -e .[mathchat,test]
+          pip install -e .[mathchat]
           pip uninstall -y openai
           coverage run -a -m pytest test
           coverage xml
