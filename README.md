@@ -179,6 +179,7 @@ In addition, you can find:
     author={Yiran Wu and Feiran Jia and Shaokun Zhang and Hangyu Li and Erkang Zhu and Yue Wang and Yin Tat Lee and Richard Peng and Qingyun Wu and Chi Wang},
     year={2023},
     booktitle={ArXiv preprint arXiv:2306.01337},
+    url={https://arxiv.org/abs/2306.01337}
 }
 ```
 
@@ -218,4 +219,8 @@ Microsoft's general trademark guidelines can be found at http://go.microsoft.com
 Privacy information can be found at https://privacy.microsoft.com/en-us/
 
 Microsoft and any contributors reserve all other rights, whether under their respective copyrights, patents,
+or trademarks, whether by implication, estoppel, or otherwise.
+## Contributor License Agreement (CLA)
+
+Contributions to this project are welcome and encouraged. To get started, please read and sign the [Contributor License Agreement (CLA)](https://cla.opensource.microsoft.com/microsoft/autogen).
 or trademarks, whether by implication, estoppel, or otherwise.
