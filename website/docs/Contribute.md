@@ -111,6 +111,25 @@ We have provided the configuration in [devcontainer](https://github.com/microsof
 
 ### Pre-commit
 
+#### Running GitHub Actions Workflows Locally
+
+1. Install the necessary dependencies by running:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Run the GitHub Actions workflows locally using the following commands:
+   - For the build workflow:
+     ```bash
+     <insert_command_to_run_build_workflow_locally>
+     ```
+   - For the openai workflow:
+   ```bash
+   <insert_command_to_run_openai_workflow_locally>
+   ```
+     ```bash
+     <insert_command_to_run_openai_workflow_locally>
+     ```
+
 Run `pre-commit install` to install pre-commit into your git hooks. Before you commit, run
 `pre-commit run` to check if you meet the pre-commit requirements. If you use Windows (without WSL) and can't commit after installing pre-commit, you can run `pre-commit uninstall` to uninstall the hook. In WSL or Linux this is supposed to work.
 
