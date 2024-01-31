@@ -36,7 +36,29 @@ AutoGen is a framework that enables the development of LLM applications using mu
 
 AutoGen is powered by collaborative [research studies](https://microsoft.github.io/autogen/docs/Research) from Microsoft, Penn State University, and the University of Washington.
 
-## Quickstart
+## Troubleshooting
+
+### Common GitHub Actions Failures
+
+If you encounter failures in the GitHub Actions workflows, follow these troubleshooting steps to debug and fix the issues.
+
+#### Build Workflow
+
+If the build workflow fails, consider the following:
+1. Check the dependencies and their installation process.
+2. Ensure that the correct Python version is being used.
+3. Review the logging for any error messages and traceback.
+4. Verify that the necessary environment variables are correctly set.
+
+#### Test Workflow
+
+If the test workflow fails, use the following guidance:
+1. Examine the test configuration and ensure it is correct.
+2. Check for any dependencies required for the tests and verify their installation.
+3. Review the test log for any errors or failures.
+4. Verify that the test environment is properly configured.
+
+### Quickstart
 The easiest way to start playing is
 1. Click below to use the Github Codespace
 
@@ -197,6 +219,22 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Troubleshooting
+
+If you encounter issues with the GitHub Actions workflows, refer to the following troubleshooting steps to resolve them.
+
+- **Build Workflow:**
+  1. Verify that the GitHub Actions configuration file (e.g., `.github/workflows/build.yml`) has the correct settings and commands.
+  2. Check for any specific environment variables or system dependencies required by the build process.
+  3. Ensure that the required dependencies are correctly installed and available.
+  4. Review the GitHub Actions logs for any error messages or warnings.
+
+- **Test Workflow:**
+  1. Review the test configuration file to ensure it is properly set up.
+  2. Check for any test-specific dependencies and ensure they are installed correctly.
+  3. Inspect the test logs for any failures or errors during the testing process.
+  4. Verify that the test environment is appropriately configured.
 
 ## Contributors Wall
 <a href="https://github.com/microsoft/autogen/graphs/contributors">
