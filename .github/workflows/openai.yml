@@ -12,6 +12,7 @@ on:
       - 'notebook/agentchat_auto_feedback_from_code_execution.ipynb'
       - 'notebook/agentchat_function_call.ipynb'
       - '.github/workflows/openai.yml'
+      - '.github/workflows/build.yml'
 
 jobs:
   test:
@@ -33,11 +34,16 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install packages and dependencies
         run: |
+          set -e
+          set -x
           docker --version
           python -m pip install --upgrade pip wheel
-          pip install -e.
-          python -c "import autogen"
+          pip install -e .
+          pip install -e pytest
+          pip install -e.[mathchat]
           pip install coverage pytest-asyncio
+- name: Verify import of autogen
+        run: python -c "import autogen"
       - name: Install packages for test when needed
         if: matrix.python-version == '3.9'
         run: |
