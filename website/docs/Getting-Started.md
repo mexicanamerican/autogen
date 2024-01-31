@@ -73,6 +73,6 @@ response = autogen.Completion.create(context=test_instance, **config)
 * Chat on [Discord](https://discord.gg/pAbnFJrkgZ).
 * Follow on [Twitter](https://twitter.com/pyautogen).
 
-If you like our project, please give it a [star](https://github.com/microsoft/autogen/stargazers) on GitHub. If you are interested in contributing, please read [Contributor's Guide](/docs/Contribute).
+If you like our project, please give it a [star](https://github.com/microsoft/autogen) on GitHub. If you are interested in contributing, please read [Contributor's Guide](/docs/Contribute).
 
 <iframe src="https://ghbtns.com/github-btn.html?user=microsoft&amp;repo=autogen&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
