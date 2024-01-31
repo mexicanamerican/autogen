@@ -1,0 +1,13 @@
+# Import necessary modules
+import os
+
+# Define file name
+file_name = "github_actions_logs.txt"
+
+# Open file in write mode
+with open(file_name, "w") as file:
+    # Write error logs to file
+    file.write("Error logs from failing GitHub Actions run")
+
+# Close the file
+file.close()
