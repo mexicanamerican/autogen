@@ -49,7 +49,6 @@ print(autogen.__version__)
   appropriate code blocks**.  See [Creating and highlighting code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks)
   for more details.
 
-
 ## Becoming a Reviewer
 
 There is currently no formal reviewer solicitation process. Current reviewers identify reviewers from active contributors. If you are willing to become a reviewer, you are welcome to let us know on discord.
