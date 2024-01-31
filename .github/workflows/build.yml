@@ -8,6 +8,7 @@ on:
     branches: ['main']
     paths:
       - 'autogen/**'
+      - 'autogen/**'
       - 'test/**'
       - '.github/workflows/build.yml'
       - 'setup.py'
