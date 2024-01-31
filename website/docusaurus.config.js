@@ -7,8 +7,8 @@ module.exports = {
   tagline: 'Enable Next-Gen Large Language Model Applications',
   url: 'https://microsoft.github.io',
   baseUrl: '/autogen/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'error',
+  onBrokenMarkdownLinks: 'error',
   favicon: 'img/ag.ico',
   organizationName: 'Microsoft', // Usually your GitHub org/user name.
   projectName: 'AutoGen', // Usually your repo name.
