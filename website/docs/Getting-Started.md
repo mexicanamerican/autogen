@@ -38,7 +38,7 @@ user_proxy.initiate_chat(assistant, message="Plot a chart of NVDA and TESLA stoc
 ```
 
 The figure below shows an example conversation flow with AutoGen.
-![Agent Chat Example](/img/chat_example.png)
+![Agent Chat Example](/img/conversation_flow.png)
 
 * [Code examples](/docs/Examples/AgentChat).
 * [Documentation](/docs/Use-Cases/agent_chat).
