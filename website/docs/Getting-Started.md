@@ -38,9 +38,9 @@ user_proxy.initiate_chat(assistant, message="Plot a chart of NVDA and TESLA stoc
 ```
 
 The figure below shows an example conversation flow with AutoGen.
-![Agent Chat Example](/img/chat_example.png)
+![Agent Chat Example](/img/conversation_flow.png)
 
-* [Code examples](/docs/Examples/AgentChat).
+* [Code examples](/docs/Examples/ConversationFlow).
 * [Documentation](/docs/Use-Cases/agent_chat).
 
 #### Enhanced LLM Inferences
@@ -60,7 +60,7 @@ config, analysis = autogen.Completion.tune(
 response = autogen.Completion.create(context=test_instance, **config)
 ```
 
-* [Code examples](/docs/Examples/Inference).
+* [Code examples](/docs/Examples/EnhancedInference).
 * [Documentation](/docs/Use-Cases/enhanced_inference).
 
 ### Where to Go Next ?
