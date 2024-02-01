@@ -52,6 +52,8 @@ jobs:
         run: |
           coverage run -a -m pytest test
           coverage --cov-report=xml
+echo Gathering coverage report...
+cat ./coverage.xml
       - name: Coverage and check notebook outputs
         if: matrix.python-version != '3.9'
         
@@ -61,7 +63,7 @@ jobs:
           coverage run -a -m pytest test/test_notebook.py
           coverage xml
 echo Coverage report:
-          cat "$(pwd)/test/executed_openai_notebook_output.txt"
+          cat "$(pwd)/coverage.xml"
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
