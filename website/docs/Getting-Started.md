@@ -60,7 +60,7 @@ config, analysis = autogen.Completion.tune(
 response = autogen.Completion.create(context=test_instance, **config)
 ```
 
-* [Code examples](/docs/Examples/Inference).
+* [Code examples](/docs/Examples/EnhancedInference).
 * [Documentation](/docs/Use-Cases/enhanced_inference).
 
 ### Where to Go Next ?
