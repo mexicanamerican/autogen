@@ -1,4 +1,3 @@
-from openai import Completion as openai_Completion, RateLimitError, APIError, BadRequestError, APIConnectionError, Timeout, AuthenticationError, Completion, ChatCompletion
 import diskcache
 
 from time import sleep
@@ -16,14 +15,7 @@ from collections import defaultdict
 
 try:
     import openai
-    from openai import (
-        RateLimitError,
-        APIError,
-        BadRequestError,
-        APIConnectionError,
-        Timeout,
-        AuthenticationError,
-    )
+    
     from openai import Completion as openai_Completion
     import diskcache
 
