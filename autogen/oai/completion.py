@@ -1,3 +1,5 @@
+import diskcache
+
 from time import sleep
 import logging
 import time
@@ -13,14 +15,7 @@ from collections import defaultdict
 
 try:
     import openai
-    from openai import (
-        RateLimitError,
-        APIError,
-        BadRequestError,
-        APIConnectionError,
-        Timeout,
-        AuthenticationError,
-    )
+    
     from openai import Completion as openai_Completion
     import diskcache
 
