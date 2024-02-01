@@ -52,7 +52,7 @@ The easiest way to start playing is
 AutoGen requires **Python version >= 3.8, < 3.12**. It can be installed from pip:
 
 ```bash
-pip install pyautogen
+pip install pyautogen pytest-asyncio
 ```
 
 Minimal dependencies are installed without extra options. You can install extra options based on the feature you need.
@@ -102,7 +102,7 @@ This example can be run with
 python test/twoagent.py
 ```
 
-After the repo is cloned.
+running the tests and checking the coverage using the following commands
 The figure below shows an example conversation flow with AutoGen.
 ![Agent Chat Example](https://github.com/microsoft/autogen/blob/main/website/static/img/chat_example.png)
 
