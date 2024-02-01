@@ -83,7 +83,6 @@ def extract_code(
 
     return extracted
 
-
 def generate_code(pattern: str = CODE_BLOCK_PATTERN, **config) -> Tuple[str, float]:
     """(openai<1) Generate code.
 
